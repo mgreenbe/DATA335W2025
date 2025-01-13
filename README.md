@@ -9,7 +9,7 @@ Matthew Greenberg (mgreenbe@ucalgary.ca)
 MW 12:30-13:30 in MS 434, or by appointment
 
 ### Teaching Assistant
-TBA
+Sorif Hossain (sorif.hossain@ucalgary.ca)
 
 ## Meetings
 
@@ -19,6 +19,8 @@ MWF 14:00-14:50 in KNB 126
 ### Tutorial
 Tu 14:00-15:50 in MS 521
 
+***There is no tutorial during the first week. Tutorials start on Tuesday, January 21.***
+
 ## Grading
 
 Four assignments worth 25% each, due Febuary 3, March 3, March 24, and April 14. Submit both a runnable Jupyter notebook .ipynb file and a static .pdf file to the appropriate D2L dropbox.
@@ -26,11 +28,54 @@ Four assignments worth 25% each, due Febuary 3, March 3, March 24, and April 14.
 ## Official description
 *An introduction to statistical computing and Bayesian modelling. Topics covered include random numbers generation, system/process simulation and evaluation, numerical integration, constrained and unconstrained optimization, Bayesian inference framework, single and multi-parameter models, regression models, Bayesian hierarchical modelling, Markov chain Monte Carlo.* [source](https://www.ucalgary.ca/pubs/calendar/archives/2023/data-science.html#43038)
 
-## Textbooks
-Mark Gelman, Jennifer Hill, and Aki Vehtari, ***Regression and Other Stories***. [web](https://avehtari.github.io/ROS-Examples/), [pdf](https://users.aalto.fi/~ave/ROS.pdf), [github](https://github.com/avehtari/ROS-Examples/tree/master)
-
-Mark Gelman and Aki Vehtari, ***Active Statistics***. [web](https://avehtari.github.io/ActiveStatistics/), [pdf](https://users.aalto.fi/~ave/ActiveStatistics.pdf)
+## Textbook
+**GHV**: Mark Gelman, Jennifer Hill, and Aki Vehtari, ***Regression and Other Stories***. [web](https://avehtari.github.io/ROS-Examples/), [pdf](https://users.aalto.fi/~ave/ROS.pdf), [github](https://github.com/avehtari/ROS-Examples/tree/master)
 
 ## Supplementary reading
+Mark Gelman and Aki Vehtari, ***Active Statistics***. [web](https://avehtari.github.io/ActiveStatistics/), [pdf](https://users.aalto.fi/~ave/ActiveStatistics.pdf)
+
 Mark Gelman, ***Statistical Modeling, Causal Inference, and Social Science***. [blog](https://statmodeling.stat.columbia.edu)
 
+## Syllabus
+
+1. Fundamentals
+   - GHV Chapters 4-5 (read Chapters 1-3 on you own, as review)
+2. Linear regression
+   - GHV Chapters 6-12
+3. Generalized linear models
+   - GHV Chapters 13-15
+4. Before and after fitting a regression
+   - GHV Chapters 16-17
+5. Causal inference
+   - GHV Chapters 18-21
+6. What comes next?
+   - GHV Chapter 22
+
+And maybe some other topics as time permits (it never does).
+
+## Cross-cutting themes
+
+- Statistical modeling workflow, [Bayesian workflow](http://www.stat.columbia.edu/~gelman/research/unpublished/Bayesian_Workflow_article.pdf)
+- Visualization for exploration, summarization, diagnostics; Matplotlib, [ArviZ](https://python.arviz.org/en/stable/)
+- Python, NumPy, pandas, [PyStan](https://github.com/stan-dev/pystan) or [PyMC](https://www.pymc.io/welcome.html) (preferences?)
+- Simulation and sampling
+- Array (tensor) programming -- slicing, vectorization, einsum
+- Numerical methods, algorithms
+
+## Downloading the course materials
+
+1. Clone this repo
+```
+git clone https://github.com/mgreenbe/DATA335W2025.git
+```
+and move into its directory:
+```
+cd DATA335W2025
+```
+
+2. Make a virtual environment, activate it, and install packages:
+```
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+```

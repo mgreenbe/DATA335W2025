@@ -1,0 +1,62 @@
+\documentclass{beamer}
+%Information to be included in the title page:
+\title{1. Fundamentals}
+\subtitle{GHV Chapters 4-5}
+\institute{}
+\date{DATA 335 -- Univerrsity of Calgary -- Winter 2025}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Statistical models and statistical inference}
+
+
+\begin{itemize}
+    \item A \emph{statistical model} is a probability distribution.
+    \item A statistical model is characterized by unknown and often unknowable numbers called \emph{parameters}.
+    They are our quantities of interest.
+    \item Statistical models facilitate \emph{statistical inference} --
+    procedures for turning data into parameters estimates,
+    avatars for their uncertainty.
+    \begin{itemize}
+        \item Frequentist inference: point estimation, standard errors, confidence intervals, hypothesis tests
+        \item Bayesian inference: posterior distribution
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Estimators for mean and variance}
+\begin{itemize}
+\item Let $x_0$, $\ldots$, $x_{n - 1}$ be a
+\emph{random sample}\footnote{independent and identically distributed}
+from the a model (distribution) $F$ with mean $\mu$ and variance $\sigma^2$.
+
+\item The \emph{sample mean}
+$$
+\bar{x} = \frac{x_0+\cdots+x_{n-1}}n
+$$
+estimates $\mu$.
+
+\item The \emph{sample variance}
+$$
+s^2 = \frac1{n - 1}\sum_{i < n}(x_i - \bar{x})
+$$
+estimates $\sigma^2$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Estimators have distributions}
+
+\begin{itemize}
+    \item Since the $x_i$ are random variables, the estimators $\bar{x}$ and $s^2$ are computed computed from them are, too.
+    \item In partifcular, they have distributions.
+    \item Distributions of random variables computed from random samples from other distributions are called \emph{sampling distributions}.
+    \item \textbf{(Demo)} Visualize sampling distributions with histograms
+\end{itemize}
+\end{frame}
+
+\end{document}
