@@ -87,9 +87,9 @@ estimates $\sigma^2$.
 
         \item Said differently,
         \[
-        z = \frac{\bar{x}-\mu}{\stderr(\bar{x})}\longrightarrow N(0, 1).
+        z = \frac{\bar{x}-\mu}{\stderr(\bar{x})}\longrightarrow N(0, 1)
         \]
-
+        as $n\to\infty$.
     \end{itemize}
 \end{frame}
 
@@ -111,8 +111,8 @@ estimates $\sigma^2$.
         \]
         and, by the central limit theorem,
         \[
-        \text{distribution of $\hat{p}$}\approx
-        N\left(p, \frac{p(1-p)}{n}\right).
+        \hat{p}\sim N\left(p, \frac{p(1-p)}{n}\right)
+        \qquad\text{(approx.)}.
         \]
     \end{itemize}
 \end{frame}
@@ -132,7 +132,7 @@ estimates $\sigma^2$.
 \end{frame}
 
 \begin{frame}
-    \frametitle{Cumulative distribution functions}
+    \frametitle{Cumulative distribution and percent point functions}
 
     \begin{itemize}
         \item The \emph{(cumulative) distribution function} of a random variable $x$ is defined by
@@ -157,16 +157,76 @@ estimates $\sigma^2$.
         z_{\alpha/2} = \PPF_{N(0, 1)}(1 - \alpha/2).
         \]
 
-        \item Let $\bar{x}$ be a sample mean with expected value $\mu$. Then it's approximately normally distributed by the CLT and 
-        $$
-        \mathbb{P}[\bar{x} - z_{\alpha/2}\stderr(\bar{x}) < \mu < \bar{x} + z_{\alpha/2}\stderr(\bar{x})] = 1-\alpha
-        $$
+        \item If $n$ is sufficiently large, then
+        \[
+        \frac{\bar{x}-\mu}{\stderr(\bar{x})}\sim N(0,1)\qquad\text{(approx.)}
+        \]
+        by the central limit theorem, implying
+        \begin{align*}
+            1 - \alpha &\approx \mathbb{P}\left[\left|\frac{\bar{x} - \mu}{\stderr(\bar{x})}\right| < z_{\alpha/2}\right]\\
+        &= \mathbb{P}[\bar{x} - z_{\alpha/2}\stderr(\bar{x}) < \mu < \bar{x} + z_{\alpha/2}\stderr(\bar{x})].
+        \end{align*}
 
-        \item The interval with endpoints $\bar{x} - z_{\alpha/2}\stderr(\bar{x})$ is called the
-        $100(1-\alpha)\%$-confidence interval for $\mu$ associated to $\bar{x}$.
+        \item The interval with endpoints $\bar{x} \pm z_{\alpha/2}\stderr(\bar{x})$ is called the
+        \emph{$100(1-\alpha)\%$-confidence interval} for $\mu$ associated to $\bar{x}$.
 
         \item \textbf{(DEMO)} Confidence intervals for sample means
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Estimating the standard error}
+
+    \begin{itemize}
+        \item Since $\sigma$ is typically unknown, so is
+        \[
+            \stderr(\bar{x})=\frac{\sigma}{\sqrt{n}}.
+        \]
+        \item To estimate it, plug in the sample standard deviation
+        for $\sigma$:
+        \[
+        \widehat{\stderr}(\bar{x}) = \frac{s}{\sqrt{n}}.
+        \]
+        \item If $n$ is sufficiently large, you can use this estimate to
+        constructing confidence intervals as above:
+        \[
+        \text{$100(1-\alpha)$\%-CI} =
+        [\bar{x} - z_{\alpha/2}\widehat{\stderr}(\bar{x}),\;
+        \bar{x} + z_{\alpha/2}\widehat{\stderr}(\bar{x})]
+        \]
+        \textbf{If $n$ is small, you can't!}
+
+        \item \textbf{(DEMO)} Bad coverage for small $n$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Confidence intervals from the $t$-distribution}
+
+    \begin{itemize}
+        \item \textbf{If the common distribution of the $x_i$ is normal}, then
+        \[
+        \frac{\bar{x}-\mu}{\widehat{\stderr}(\bar{x})}\sim t_{n-1}
+        \]
+        ($t$-distribution with $n-1$ degrees of freedom).
+
+        \item \textbf{(DEMO)} Simulating $t_{n-1}$
+        
+        \item We can use the percent-point function of $t_{n-1}$ to
+        construct confidence intervals for $\bar{x}$. Set
+        \[
+        t_{n-1,\alpha/2} = \PPF_{t_{n-1}}(1 - \alpha/2).
+        \]
+        and define
+        \[
+        \text{$100(1-\alpha)$\%-CI} = 
+        [\bar{x} - t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x}),\;
+        \bar{x} + t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x})].
+        \]
+
+        \item This is valid for small $n$!
+        For large $n$, we have $t_{n-1}\approx N(0, 1)$ and $z_{\alpha/2}\approx t_{n-1, \alpha/2}$.
+    \end{itemize}
+    
+\end{frame}
 \end{document}
