@@ -5,6 +5,12 @@
 \institute{}
 \date{DATA 335 -- Univerrsity of Calgary -- Winter 2025}
 
+\DeclareMathOperator{\stderr}{se}
+\DeclareMathOperator{\Ber}{Ber}
+\DeclareMathOperator{\Bin}{Bin}
+\DeclareMathOperator{\CDF}{cdf}
+\DeclareMathOperator{\PPF}{ppf}
+
 \begin{document}
 
 \frame{\titlepage}
@@ -55,8 +61,112 @@ estimates $\sigma^2$.
     \item Since the $x_i$ are random variables, the estimators $\bar{x}$ and $s^2$ are computed computed from them are, too.
     \item In partifcular, they have distributions.
     \item Distributions of random variables computed from random samples from other distributions are called \emph{sampling distributions}.
-    \item \textbf{(Demo)} Visualize sampling distributions with histograms
+    \item \textbf{(Demo)} Visualizing sampling distributions
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Standard error}
+    
+    \begin{itemize}
+        \item The \emph{standard error} of a random variable $x$, denoted $\stderr(x)$, is the standard deviation of its distribution.
+        \item $\stderr(x)$ is the fundamental numerical distillation of the uncertainty in $x$.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{The sampling distribution of the mean}
+
+    \begin{itemize}
+        \item If $x_0$, $\ldots$, $x_{n - 1}$ is a random sample drawn from
+        a distribution with mean $\mu$ and standard deviation $\sigma$, then
+        \[
+            \stderr(\bar{x}) = \frac{\sigma}{\sqrt{n}}.
+        \]
+        \item By the \emph{Central Limit Theorem}, the distribution of $\bar{x}$
+        is approximately\footnote{the larger the sample size, the better the approximation} normal, with mean $\mu$ and standard deviation $\stderr(\bar{x})$.
+
+        \item Said differently,
+        \[
+        z = \frac{\bar{x}-\mu}{\stderr(\bar{x})}\longrightarrow N(0, 1).
+        \]
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Normal approximation to the binomial proportion}
+
+    \begin{itemize}
+        \item When $y\sim \Bin(n, p)$, we estimate the binomial proportion $p$ by
+        \[
+        \hat{p} = \frac{y}{n}.
+        \]
+
+        \item $\Bin(n, p)$-RVs are \emph{sums} of $\Ber(p)$-RVs, making $\hat{p}$
+        the \emph{average} of $\Ber(p)$-RVs. Thus, $\hat{p}$ is a \emph{sample mean}.
+        
+        \item Since $\Ber(p)$ has standard deviation $\sqrt{p(1-p)}$,
+        \[
+        \stderr(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}
+        \]
+        and, by the central limit theorem,
+        \[
+        \text{distribution of $\hat{p}$}\approx
+        N\left(p, \frac{p(1-p)}{n}\right).
+        \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Normal approximation to the binomial distribution}
+    
+    \begin{itemize}
+        \item Since $y=n\hat{p}$, we have
+        \[
+        \Bin(n, p) = \text{distribution of $y$}\approx
+        N\left(np, np(1-p)\right).
+        \]
+
+        \item \textbf{(Demo)} Normal approximation to the binomial distribution
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cumulative distribution functions}
+
+    \begin{itemize}
+        \item The \emph{(cumulative) distribution function} of a random variable $x$ is defined by
+        \[
+            \CDF_x(u) = \mathbb{P}[x\leq u].
+        \]
+
+        \item Its inverse function is called the \emph{percent point function}.
+        \[
+        \PPF_x(v) = u\Longleftrightarrow \mathbb{P}[x\leq u] = v 
+        \]
+        Also known as the \emph{quantile function} or \emph{inverse (cumulative) distribution function}.
+    \end{itemize}    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Confidence intervals for sample means}
+
+    \begin{itemize}
+        \item Define
+        \[
+        z_{\alpha/2} = \PPF_{N(0, 1)}(1 - \alpha/2).
+        \]
+
+        \item Let $\bar{x}$ be a sample mean with expected value $\mu$. Then it's approximately normally distributed by the CLT and 
+        $$
+        \mathbb{P}[\bar{x} - z_{\alpha/2}\stderr(\bar{x}) < \mu < \bar{x} + z_{\alpha/2}\stderr(\bar{x})] = 1-\alpha
+        $$
+
+        \item The interval with endpoints $\bar{x} - z_{\alpha/2}\stderr(\bar{x})$ is called the
+        $100(1-\alpha)\%$-confidence interval for $\mu$ associated to $\bar{x}$.
+
+        \item \textbf{(DEMO)} Confidence intervals for sample means
+    \end{itemize}
 \end{frame}
 
 \end{document}

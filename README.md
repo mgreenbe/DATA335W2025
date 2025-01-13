@@ -16,6 +16,8 @@ Sorif Hossain (sorif.hossain@ucalgary.ca)
 ### Lecture
 MWF 14:00-14:50 in KNB 126
 
+***I'll be out of town on Friday, January 17 and Monday, January 20. I'll post video lecture for those two classes through the D2L site for you to consume asynchronously.***
+
 ### Tutorial
 Tu 14:00-15:50 in MS 521
 
@@ -79,3 +81,13 @@ python3.13 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
+
+3. To update your local clone of the repo, run `git pull` from the repo root. To be notified about updates, watch repo by clicking the *Watch* button at the top of [repo's GitHub page](https://github.com/mgreenbe/DATA335W2025).
+
+## Contributing
+
+### Fixing mistakes
+If you find an error in any of the material in this repo, please help me fix. If you can fix it yourself, please do so and submit a PR. If you suspect an error, open an issue.
+
+### Suggestions and discussion
+I'm very happy to take suggestions or have discussions in the issues tab. Feel free to open them and to engage with any open issues. Please keep in mind, though, that all of these interactions are public.
