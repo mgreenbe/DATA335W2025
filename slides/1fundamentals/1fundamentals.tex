@@ -11,6 +11,8 @@
 \DeclareMathOperator{\CDF}{cdf}
 \DeclareMathOperator{\PPF}{ppf}
 
+\setbeamertemplate{footline}[frame number]
+
 \begin{document}
 
 \frame{\titlepage}
@@ -71,162 +73,268 @@ estimates $\sigma^2$.
     \begin{itemize}
         \item The \emph{standard error} of a random variable $x$, denoted $\stderr(x)$, is the standard deviation of its distribution.
         \item $\stderr(x)$ is the fundamental numerical distillation of the uncertainty in $x$.
+        \item Standard error of the mean:
+        \[
+            \stderr(\bar{x}) = \frac{\stderr(x)}{\sqrt{n}} = \frac{\sigma}{\sqrt{n}}
+        \]
+        
     \end{itemize}
 \end{frame}
 \begin{frame}
-    \frametitle{The sampling distribution of the mean}
-
-    \begin{itemize}
-        \item If $x_0$, $\ldots$, $x_{n - 1}$ is a random sample drawn from
-        a distribution with mean $\mu$ and standard deviation $\sigma$, then
-        \[
-            \stderr(\bar{x}) = \frac{\sigma}{\sqrt{n}}.
-        \]
-        \item By the \emph{Central Limit Theorem}, the distribution of $\bar{x}$
-        is approximately\footnote{the larger the sample size, the better the approximation} normal, with mean $\mu$ and standard deviation $\stderr(\bar{x})$.
-
-        \item Said differently,
-        \[
-        z = \frac{\bar{x}-\mu}{\stderr(\bar{x})}\longrightarrow N(0, 1)
-        \]
-        as $n\to\infty$.
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Normal approximation to the binomial proportion}
-
+    \frametitle{Standard error of the binomial proportion}
     \begin{itemize}
         \item When $y\sim \Bin(n, p)$, we estimate the binomial proportion $p$ by
         \[
         \hat{p} = \frac{y}{n}.
         \]
 
-        \item $\Bin(n, p)$-RVs are \emph{sums} of $\Ber(p)$-RVs, making $\hat{p}$
-        the \emph{average} of $\Ber(p)$-RVs. Thus, $\hat{p}$ is a \emph{sample mean}.
+        \item $\hat{p}$ is a $\Ber(p)$-sample mean: $\Bin(n, p)$-RVs are \emph{sums} of $\Ber(p)$-RVs, making $\hat{p}$
+        the \emph{average} of such.
         
-        \item Since $\Ber(p)$ has standard deviation $\sqrt{p(1-p)}$,
+        \item $\Ber(p)$ has standard deviation $\sigma=\sqrt{p(1-p)}$, so
         \[
-        \stderr(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}
+        \stderr(\hat{p}) = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{p(1-p)}{n}}.
         \]
-        and, by the central limit theorem,
+
+        \item As $p$ is unknown, we estimate $\stderr(\hat{p})$ by plugging in $\hat{p}$ for $p$:
         \[
-        \hat{p}\sim N\left(p, \frac{p(1-p)}{n}\right)
-        \qquad\text{(approx.)}.
+        \stderr(\hat{p}) \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}.
         \]
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Normal approximation to the binomial distribution}
-    
+    \frametitle{Example: Inference for binomial proportions}
     \begin{itemize}
-        \item Since $y=n\hat{p}$, we have
+        \item In a survey of university students, 57 out of 146 of male respondents say they regularly tweeze their eyebrows.
+        \item Model the number $y$ of male student tweezers by $\Bin(n, p)$ with $n=146$.
+        \item Estimate $p$:
         \[
-        \Bin(n, p) = \text{distribution of $y$}\approx
-        N\left(np, np(1-p)\right).
+        \hat{p} = \frac{y}{n}=\frac{57}{146} = 0.39
         \]
-
-        \item \textbf{(Demo)} Normal approximation to the binomial distribution
+        \item Estimate $\stderr(\hat{p})$:
+        \[
+        \stderr(\hat{p}) \approx \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} = 
+        \sqrt{\frac{0.39(1-0.39)}{146}}=0.04
+        \]
     \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Cumulative distribution and percent point functions}
-
+    \frametitle{Approximate normality of sample means}
     \begin{itemize}
-        \item The \emph{(cumulative) distribution function} of a random variable $x$ is defined by
-        \[
-            \CDF_x(u) = \mathbb{P}[x\leq u].
-        \]
+        \item By the \emph{Central Limit Theorem} (CLT), the distribution of $\bar{x}$
+        is approximately $N(\mu, \stderr(\bar{x})^2)$-distributed if $n$ is sufficiently large.
+        
+        \item Samples means being approximately normal, we can use \emph{normal theory}
+        to perform related inference tasks.
 
-        \item Its inverse function is called the \emph{percent point function}.
-        \[
-        \PPF_x(v) = u\Longleftrightarrow \mathbb{P}[x\leq u] = v 
-        \]
-        Also known as the \emph{quantile function} or \emph{inverse (cumulative) distribution function}.
-    \end{itemize}    
+        \item \textbf{(DEMO)} Illustrate CLT for sample means
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Confidence intervals for sample means}
-
+    \frametitle{Confidence intervals for binomial proportions}
     \begin{itemize}
-        \item Define
-        \[
-        z_{\alpha/2} = \PPF_{N(0, 1)}(1 - \alpha/2).
-        \]
-
-        \item If $n$ is sufficiently large, then
-        \[
-        \frac{\bar{x}-\mu}{\stderr(\bar{x})}\sim N(0,1)\qquad\text{(approx.)}
-        \]
-        by the central limit theorem, implying
+        % \item If $y\sim\Bin(n, p)$ and $n$ is large, then
+        % \[
+        % \hat{p}=\frac{y}{n}\sim N\left(p, \frac{p(1-p)}{n}\right)
+        % \qquad\text{(approx.)}.
+        % \]
+        \item Use standard $z$-table values to construct confidence intervals
+        for $\hat{p}$. With $z_{\alpha/2} = \PPF_{N(0, 1)}(1 - \alpha/2)$,
         \begin{align*}
-            1 - \alpha &\approx \mathbb{P}\left[\left|\frac{\bar{x} - \mu}{\stderr(\bar{x})}\right| < z_{\alpha/2}\right]\\
-        &= \mathbb{P}[\bar{x} - z_{\alpha/2}\stderr(\bar{x}) < \mu < \bar{x} + z_{\alpha/2}\stderr(\bar{x})].
+        \text{$100(1-\alpha)$\%-CI} &=
+        [\hat{p} \pm z_{\alpha/2}\stderr(\hat{p})]\\
+        &\approx \left[\hat{p} \pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}\right].
         \end{align*}
 
-        \item The interval with endpoints $\bar{x} \pm z_{\alpha/2}\stderr(\bar{x})$ is called the
-        \emph{$100(1-\alpha)\%$-confidence interval} for $\mu$ associated to $\bar{x}$.
+        \item Example: The $95$\%-CI for the proportion of male student eyebrow tweezers is
+        \[
+        [0.39 \pm 1.96\cdot0.04]=[0.39\pm 0.08].
+        \]
 
-        \item \textbf{(DEMO)} Confidence intervals for sample means
     \end{itemize}
 \end{frame}
 
-\begin{frame}
-    \frametitle{Estimating the standard error}
 
-    \begin{itemize}
-        \item Since $\sigma$ is typically unknown, so is
-        \[
-            \stderr(\bar{x})=\frac{\sigma}{\sqrt{n}}.
-        \]
-        \item To estimate it, plug in the sample standard deviation
-        for $\sigma$:
-        \[
-        \widehat{\stderr}(\bar{x}) = \frac{s}{\sqrt{n}}.
-        \]
-        \item If $n$ is sufficiently large, you can use this estimate to
-        constructing confidence intervals as above:
-        \[
-        \text{$100(1-\alpha)$\%-CI} =
-        [\bar{x} - z_{\alpha/2}\widehat{\stderr}(\bar{x}),\;
-        \bar{x} + z_{\alpha/2}\widehat{\stderr}(\bar{x})]
-        \]
-        \textbf{If $n$ is small, you can't!}
+% \begin{frame}
+%     \frametitle{Normal approximation to the binomial proportion}
 
-        \item \textbf{(DEMO)} Bad coverage for small $n$
-    \end{itemize}
-\end{frame}
+%     \begin{itemize}
+%         \item When $y\sim \Bin(n, p)$, we estimate the binomial proportion $p$ by
+%         \[
+%         \hat{p} = \frac{y}{n}.
+%         \]
 
-\begin{frame}
-    \frametitle{Confidence intervals from the $t$-distribution}
-
-    \begin{itemize}
-        \item \textbf{If the common distribution of the $x_i$ is normal}, then
-        \[
-        \frac{\bar{x}-\mu}{\widehat{\stderr}(\bar{x})}\sim t_{n-1}
-        \]
-        ($t$-distribution with $n-1$ degrees of freedom).
-
-        \item \textbf{(DEMO)} Simulating $t_{n-1}$
+%         \item $\Bin(n, p)$-RVs are \emph{sums} of $\Ber(p)$-RVs, making $\hat{p}$
+%         the \emph{average} of $\Ber(p)$-RVs. Thus, $\hat{p}$ is a \emph{sample mean}.
         
-        \item We can use the percent-point function of $t_{n-1}$ to
-        construct confidence intervals for $\bar{x}$. Set
+%         \item Since $\Ber(p)$ has standard deviation $\sigma=\sqrt{p(1-p)}$,
+%         \[
+%         \stderr(\hat{p}) = \frac{\sigma}{\sqrt{n}} = \sqrt{\frac{p(1-p)}{n}}.
+%         \]
+
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{Normal approximation to the binomial distribution}
+    
+%     \begin{itemize}
+%         \item Since $y=n\hat{p}$, we have
+%         \[
+%         \Bin(n, p) = \text{distribution of $y$}\approx
+%         N\left(np, np(1-p)\right).
+%         \]
+
+%         \item \textbf{(Demo)} Normal approximation to the binomial distribution
+%     \end{itemize}
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{Recall: Cumulative distribution and percent point functions}
+
+%     \begin{itemize}
+%         \item The \emph{(cumulative) distribution function} of a random variable $x$ is defined by
+%         \[
+%             \CDF_x(u) = \mathbb{P}[x\leq u].
+%         \]
+
+%         \item Its inverse function is called the \emph{percent point function}.
+%         \[
+%         \PPF_x(v) = u\Longleftrightarrow \mathbb{P}[x\leq u] = v 
+%         \]
+%         Also known as the \emph{quantile function} or \emph{inverse (cumulative) distribution function}.
+%     \end{itemize}    
+% \end{frame}
+
+% \begin{frame}
+%     \frametitle{Recall: Confidence intervals for normal means}
+
+%     \begin{itemize}
+%         \item Define
+%         \[
+%         z_{\alpha/2} = \PPF_{N(0, 1)}(1 - \alpha/2).
+%         \]
+
+%         \item If $n$ is sufficiently large, then
+%         \[
+%         \frac{\bar{x}-\mu}{\stderr(\bar{x})}\sim N(0,1)\qquad\text{(approx.)}.
+%         \]
+%         by the CLT, implying
+%         \begin{align*}
+%             1 - \alpha &\approx \mathbb{P}\left[\left|\frac{\bar{x} - \mu}{\stderr(\bar{x})}\right| < z_{\alpha/2}\right]\\
+%         &= \mathbb{P}[\bar{x} - z_{\alpha/2}\stderr(\bar{x}) < \mu < \bar{x} + z_{\alpha/2}\stderr(\bar{x})].
+%         \end{align*}
+
+%         \item The interval with endpoints $\bar{x} \pm z_{\alpha/2}\stderr(\bar{x})$ is called the
+%         \emph{$100(1-\alpha)\%$-confidence interval} for $\mu$ associated to $\bar{x}$.
+
+%         \item \textbf{(DEMO)} Confidence intervals for sample means
+%     \end{itemize}
+% \end{frame}
+
+
+% \begin{frame}
+%     \frametitle{Confidence intervals from the $t$-distribution}
+
+%     \begin{itemize}
+%         \item \textbf{If the common distribution of the $x_i$ is normal}, then
+%         \[
+%         \frac{\bar{x}-\mu}{\widehat{\stderr}(\bar{x})}\sim t_{n-1}
+%         \]
+%         ($t$-distribution with $n-1$ degrees of freedom).
+
+%         \item \textbf{(DEMO)} Simulating $t_{n-1}$
+        
+%         \item We can use the percent-point function of $t_{n-1}$ to
+%         construct confidence intervals for $\bar{x}$. Set
+%         \[
+%         t_{n-1,\alpha/2} = \PPF_{t_{n-1}}(1 - \alpha/2).
+%         \]
+%         and define
+%         \[
+%         \text{$100(1-\alpha)$\%-CI} = 
+%         [\bar{x} - t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x}),\;
+%         \bar{x} + t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x})].
+%         \]
+
+%         \item This is valid for small $n$!
+%         For large $n$, we have $t_{n-1}\approx N(0, 1)$ and $z_{\alpha/2}\approx t_{n-1, \alpha/2}$.
+%     \end{itemize}
+% \end{frame}
+
+
+\begin{frame}
+    \frametitle{Combining means and proportions}
+
+    \begin{itemize}
+        \item Stantard errors of independent random variables combine according to the Pythagoream theorem:
         \[
-        t_{n-1,\alpha/2} = \PPF_{t_{n-1}}(1 - \alpha/2).
-        \]
-        and define
-        \[
-        \text{$100(1-\alpha)$\%-CI} = 
-        [\bar{x} - t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x}),\;
-        \bar{x} + t_{n-1,\alpha/2}\widehat{\stderr}(\bar{x})].
+        \stderr(x\pm y) = \sqrt{\stderr(x)^2 + \stderr(y)^2}.
         \]
 
-        \item This is valid for small $n$!
-        For large $n$, we have $t_{n-1}\approx N(0, 1)$ and $z_{\alpha/2}\approx t_{n-1, \alpha/2}$.
+        \item More generally, the standard error of a \emph{weighted sum} of independent random variables is:
+        \[
+        \stderr\left(\sum_iw_ix_i\right) = 
+        \sqrt{\sum_iw_i^2\stderr(x_i)^2}
+        \]
     \end{itemize}
-    
 \end{frame}
+
+\begin{frame}
+    \frametitle{Example: Gender gap (GHV \S4.2, pp.~52-53)}
+
+    \begin{itemize}
+        \item In a survey of voting intentions, 57\% of 400 men 45\% of 600 women
+        say they plan to vote for the Republican candidate in an upcoming election. 
+
+        \item Model the men's and women's counts by $\Bin(400, p)$ and $\Bin(600, q)$, respectively.
+        
+        \item Estimate $p$, $q$, $\stderr(p)$, and $\stderr(q)$:
+        \[
+            \hat{p}=0.57,\quad \stderr(\hat{p})=0.025,\quad \hat{q} = 0.45,
+            \quad\stderr(\hat{q})= 0.020
+        \]
+
+        \item We get corresponding estimates for the \emph{gender gap} and its standard error:
+        \[
+        \hat{p} - \hat{q} = 0.12,\quad \stderr(\hat{p} - \hat{q}) = \sqrt{0.025^2 + 0.020^2} = 0.032
+        \]
+
+        \item The 95\%-CI for this gender gap is
+        \[
+        \left[(\hat{p} - \hat{q}) \pm 1.96\stderr(\hat{p} - \hat{q})\right] = 
+        \left[0.12 \pm 0.06\right].
+        \]
+    \end{itemize}
+\end{frame}
+
+    \begin{frame}
+        \frametitle{Example: A goodness of fit test (cf.~GHV \S4.6)}
+        
+        \begin{itemize}
+            \item The 1000 votes in an election with two candidates, A and B, are tallied batches of 100. The counters report the following batch tallies for candidate A:
+            \[
+            61,\, 64,\, 54,\, 61,\, 59,\, 58,\, 65,\, 62,\, 61,\, 59
+            \]
+            Candidate B protests, suggesting that these results exhibit implausible uniformity. Does he have a case?
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}
+        \begin{itemize}
+            \item Let $y_i$ be the $i$-th tally and let $\bar{y}$ be their average.
+            \item Implausible uniformity would manifest as an implausibly small value of the \emph{test statistic}
+            \[
+            t = \sum_i (y_i - \bar{y})^2.
+            \]
+            \item The observed vote tallies give $t=88$.
+            \item We assess the implausibility observing $t=88$ by studying the distribution of $t$ under the assumption of a fair election in which candidate A has 60\% support.
+            \item \textbf{(DEMO)} Goodness of fit
+        \end{itemize} 
+    \end{frame}
+
 \end{document}
