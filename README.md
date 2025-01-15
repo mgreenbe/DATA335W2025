@@ -29,6 +29,10 @@ Four assignments worth 25% each, due Febuary 3, March 3, March 24, and April 14.
 
 Roughly half each assignment will be drawn from lab problems, the other half coming from the textbook and other sources.
 
+## Solution sets
+
+We'll collate the nicest student solutions to assignment problems and post them on the course D2L site (not on GitHub!). If you don't want your work included in solution sets, please let us know.
+
 ## Official description
 *An introduction to statistical computing and Bayesian modelling. Topics covered include random numbers generation, system/process simulation and evaluation, numerical integration, constrained and unconstrained optimization, Bayesian inference framework, single and multi-parameter models, regression models, Bayesian hierarchical modelling, Markov chain Monte Carlo.* [source](https://www.ucalgary.ca/pubs/calendar/archives/2023/data-science.html#43038)
 
