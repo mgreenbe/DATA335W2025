@@ -27,6 +27,8 @@ Tu 14:00-15:50 in MS 521
 
 Four assignments worth 25% each, due Febuary 3, March 3, March 24, and April 14. Submit both a runnable Jupyter notebook .ipynb file and a static .pdf file to the appropriate D2L dropbox.
 
+Roughly half each assignment will be drawn from lab problems, the other half coming from the textbook and other sources.
+
 ## Official description
 *An introduction to statistical computing and Bayesian modelling. Topics covered include random numbers generation, system/process simulation and evaluation, numerical integration, constrained and unconstrained optimization, Bayesian inference framework, single and multi-parameter models, regression models, Bayesian hierarchical modelling, Markov chain Monte Carlo.* [source](https://www.ucalgary.ca/pubs/calendar/archives/2023/data-science.html#43038)
 
