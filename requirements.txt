@@ -1,6 +1,9 @@
+ipykernel
+ipywidgets
 numpy
 pandas
 matplotlib
 scipy
 scikit-learn
-ipykernel
+bambi
+arviz
