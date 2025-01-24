@@ -1,9 +1,8 @@
 ipykernel
 ipywidgets
-numpy
+numpy>=2.2
 pandas
 matplotlib
 scipy
 scikit-learn
 bambi
-arviz
