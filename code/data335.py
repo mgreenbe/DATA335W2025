@@ -4,9 +4,21 @@ import scipy.stats as stats
 from typing import Sequence
 from arviz import InferenceData
 from dataclasses import dataclass, field
-from numpy.typing import NDArray
+from numpy.typing import ArrayLike, NDArray
 from cmdstanpy import CmdStanModel, CmdStanMCMC
 from bambi import Model as BambiModel
+
+_mad_sd_scale = stats.norm().ppf(0.75)  # This is 1/1.482602218505602.
+
+
+def mad(x: ArrayLike, **kwargs):
+    """
+    Same as stats.median_abs_deviation but with scale defaulting
+    to 1/1.482602218505602 (note reciprocal!) instead of to 1.0.
+    """
+    if "scale" not in kwargs:
+        kwargs["scale"] = _mad_sd_scale
+    return stats.median_abs_deviation(x, **kwargs)
 
 
 @dataclass(kw_only=True)
@@ -161,7 +173,7 @@ class StanLMFit:
         stan_draws = stan_mcmc.draws_pd()
         draws = pd.DataFrame(
             {
-                "(Intercept)": stan_draws["alpha"],
+                "Intercept": stan_draws["alpha"],
                 **{
                     feature: stan_draws[f"beta[{i + 1}]"]
                     for i, feature in enumerate(features)
@@ -172,9 +184,7 @@ class StanLMFit:
 
         median = draws.median()
         median.name = "median"
-        mad_sd = pd.Series(
-            stats.median_abs_deviation(draws, axis=0), median.index, name="mad_sd"
-        )
+        mad_sd = pd.Series(mad(draws, axis=0), median.index, name="mad_sd")
         summary = pd.concat([median, mad_sd], axis=1)
 
         self.draws = draws
@@ -230,9 +240,7 @@ class BambiLMFit:
 
         median = draws.median()
         median.name = "median"
-        mad_sd = pd.Series(
-            stats.median_abs_deviation(draws, axis=0), median.index, name="mad_sd"
-        )
+        mad_sd = pd.Series(mad(draws, axis=0), median.index, name="mad_sd")
         summary = pd.concat([median, mad_sd], axis=1)
 
         self.draws = draws
