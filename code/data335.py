@@ -1,162 +1,257 @@
 import numpy as np
 import pandas as pd
-import re
-from dataclasses import dataclass, field
+import scipy.stats as stats
 from typing import Sequence
-from numpy.typing import NDArray, ArrayLike
-from scipy.linalg import solve_triangular
-from scipy.linalg.lapack import dtrtri  # type: ignore
-from pandas._typing import ArrayLike as PandasArrayLike  # type: ignore
+from arviz import InferenceData
+from dataclasses import dataclass, field
+from numpy.typing import NDArray
+from cmdstanpy import CmdStanModel, CmdStanMCMC
+from bambi import Model as BambiModel
 
 
-@dataclass(frozen=True, kw_only=True, slots=True)
-class LMSpec:
-    response: str
-    predictors: Sequence[str]
-    fit_intercept: bool
+@dataclass(kw_only=True)
+class TTestResult:
+    df: int
+    stat: NDArray[np.float64]
+    pval: NDArray[np.float64]
 
 
-def parse_formula(string: str):
-    sides = string.split("~")
-    assert len(sides) > 0
-    if len(sides) == 1:
-        assert "~" not in string
-        raise SyntaxError("Formula must contain the ~ character.")
-    if len(sides) > 2:
-        assert len(re.findall(string, "~")) > 1
-        raise SyntaxError("Formula can only contain a single ~ character.")
-
-    response = sides[0].strip()
-    if response == "":
-        raise SyntaxError("Left-hand-side cannot be empty.")
-
-    predictors = []
-    wildcard = False
-    fit_intercept = None
-    lhs_terms = [term.strip() for term in sides[1].split("+")]
-    for term in lhs_terms:
-        if term == "":
-            raise SyntaxError("Empty term")
-        elif term == "1":
-            if fit_intercept is not None:
-                raise SyntaxError("Multiple intercept terms.")
-            fit_intercept = True
-        elif term == "-1" or term == "0":
-            if fit_intercept is not None:
-                raise SyntaxError("Multiple intercept terms.")
-            fit_intercept = False
-        elif term == ".":
-            if wildcard:
-                raise SyntaxError("Multiple uses of wildcard '.'")
-            if predictors != []:
-                raise SyntaxError(
-                    f"Wildcard '.' in the presence of another predictor ({predictors[0]})."
-                )
-            wildcard = True
-
-        else:
-            if wildcard:
-                raise SyntaxError(
-                    f"Wildcard '.' in the presence of another predictor ({term})."
-                )
-            elif term in predictors:
-                raise SyntaxError(f"Repeated term: {term}")
-            else:
-                predictors.append(term)
-    if fit_intercept is None:
-        fit_intercept = True
-    return LMSpec(
-        response=response,
-        predictors=predictors,
-        fit_intercept=fit_intercept,
-    )
+@dataclass(kw_only=True)
+class FTestResult:
+    df1: int
+    df2: int
+    stat: np.float64
+    pval: np.float64
 
 
-@dataclass(frozen=True, kw_only=True, slots=True)
-class QRFitResult:
-    coef: NDArray[np.float64]
-    fitted: NDArray[np.float64] = field(repr=False)
-    resid: NDArray[np.float64] = field(repr=False)
-    diag: NDArray[np.float64] = field(repr=False)
+@dataclass(kw_only=True)
+class FitComparison:
+    r2: np.float64
+    r2_adj: np.float64
+    ftest: FTestResult
+
+    def _repr_html_(self):
+        r2 = self.r2
+        r2_adj = self.r2_adj
+        ftest = self.ftest
+
+        html = f"""<pre>\
+Multiple R-squared: {r2:.6f}, Adjusted R-squared: {r2_adj:.6f}
+F-statistic: {ftest.stat:.6f} on {ftest.df1} and {ftest.df2} DF, p-value: {ftest.pval:.6f}</pre>\
+"""
+        return html
 
 
-class QR:
-    Q: NDArray[np.float64]
-    R: NDArray[np.float64]
+@dataclass(kw_only=True)
+class LMFit:
+    target: str
+    features: Sequence[str]
+    n: int
+    unscaled_coef_cov: NDArray[np.float64] = field(repr=False)
+    coef_est: NDArray[np.float64] = field(repr=False)
+    ss: np.float64 = field(repr=False)
 
-    def __init__(self, x: ArrayLike | PandasArrayLike):
-        x = np.array(x, dtype=np.float64)
-        Q, R = np.linalg.qr(x)
-        assert Q.dtype.type is np.float64 and R.dtype.type is np.float64
-        self.Q = Q
-        self.R = R
+    df: int = field(init=False)
+    se: np.float64 = field(init=False, repr=False)
+    coef_se: NDArray[np.float64] = field(init=False, repr=False)
+    ttest: TTestResult = field(init=False, repr=False)
 
-    def solve(self, y: ArrayLike | PandasArrayLike) -> NDArray[np.float64]:
-        y = np.array(y, dtype=np.float32)
-        b = solve_triangular(self.R, self.Q.T @ y)
-        assert b.dtype.type is np.float64
-        return b
+    def __post_init__(self):
+        unscaled_coef_cov = self.unscaled_coef_cov
+        coef_est = self.coef_est
+        ss = self.ss
+        n = self.n
 
-    def fit(self, y: ArrayLike | PandasArrayLike) -> QRFitResult:
-        R = self.R
-        Q = self.Q
-        y = np.array(y, dtype=np.float32)
-        Rinv = dtrtri(R, lower=0)[0]
-        coef = Rinv @ Q.T @ y
-        fitted = Q @ (R @ coef)
-        resid = y - fitted
-        diag = np.diagonal(Rinv @ Rinv.T)
-        assert (
-            coef.dtype.type is np.float64
-            and fitted.dtype.type is np.float64
-            and resid.dtype.type is np.float64
+        df = n - len(coef_est)
+        se = np.sqrt(ss / df).astype(np.float64)
+        coef_se = se * np.sqrt(unscaled_coef_cov.diagonal())
+        coef_tstat = coef_est / coef_se
+        ttest = TTestResult(
+            df=df, stat=coef_tstat, pval=2 * stats.t(df).cdf(-np.abs(coef_tstat))
         )
-        return QRFitResult(coef=coef, fitted=fitted, resid=resid, diag=diag)
+
+        self.df = df
+        self.se = se
+        self.coef_se = coef_se
+        self.ttest = ttest
+
+    def _repr_html_(self):
+        features = self.features
+        coef_est = self.coef_est
+        coef_se = self.coef_se
+        se = self.se
+        ttest = self.ttest
+
+        summary = {
+            "estimate": [*coef_est, se],
+            "standard error": [*coef_se, ""],
+            "t-statistic": [*ttest.stat, ""],
+            "p-value": [*ttest.pval, ""],
+        }
+
+        summary_df = pd.DataFrame(summary, index=pd.Index([*features, "sigma"]))
+        return summary_df._repr_html_()  # type: ignore
 
 
-class LM:
-    spec: LMSpec
-    df_residual: int
-    coefficients: NDArray[np.float64]
-    cov_unscaled: NDArray[np.float64]
-    fitted_values: NDArray[np.float64]
-    residuals: NDArray[np.float64]
-    sigma: np.float64
+def lm(
+    data: pd.DataFrame,
+    *,
+    features: Sequence[str] | None = None,
+    target: str,
+    fit_intercept=True,
+):
+    y = data[target].to_numpy(dtype=np.float64)
+    n = len(y)
+    if features is None:
+        features = [c for c in data.columns if c != target]
+    X = data[features].to_numpy(dtype=np.float64)
+    if fit_intercept:
+        features = ["(Intercept)", *features]
+        X = np.hstack([np.ones((n, 1)), X])
+    p = X.shape[1]
+    if p == 0:
+        raise Exception(f"Degeneate data matrix: shape = {X.shape}")
 
-    def __init__(self, spec: LMSpec, data: pd.DataFrame):
-        X = data[spec.predictors].to_numpy(dtype=np.float64)
-        n, p = X.shape
+    unscaled_coef_cov = np.linalg.inv(X.T @ X).astype(np.float64)
+    coef_est = unscaled_coef_cov @ (X.T @ y)
+    yfit = X @ coef_est
+    resid = y - yfit
+    ss = np.sum(resid**2)
 
-        if spec.fit_intercept:
-            X = np.hstack((np.ones((n, 1)), X))
-        y = data[spec.response].to_numpy(dtype=np.float64)
-
-        Q, R = np.linalg.qr(X)
-        if any(np.abs(np.diagonal(R)) < 1e-8):
-            raise np.linalg.LinAlgError("Singular design matrix.")
-        df_residual = n - p
-
-        Rinv = dtrtri(R, lower=0)[0]
-        cov_unscaled = Rinv @ Rinv.T
-        coefficients = Rinv @ Q.T @ y
-        fitted_values = Q @ (R @ coefficients)
-        residuals = y - fitted_values
-
-        residual_ss = np.sum(residuals**2)
-        residual_var = residual_ss / df_residual
-        sigma = np.sqrt(residual_var)
-
-        self.spec = spec
-        self.coefficients = coefficients
-        self.cov_unscaled = cov_unscaled
-        self.fitted_values = fitted_values
-        self.residuals = residuals
-        self.df_residual = df_residual
+    fit = LMFit(
+        target=target,
+        features=features,
+        n=n,
+        coef_est=coef_est,
+        unscaled_coef_cov=unscaled_coef_cov,
+        ss=ss,
+    )
+    return fit
 
 
-df = pd.read_csv("test/data/x0-2_y_20.csv")
-X = df[["x0", "x1"]].values
-y = df["y"].values
+def compare_fits(full: LMFit, reduced: LMFit):
+    r2 = 1 - full.ss / reduced.ss
+    r2_adj = 1 - (full.ss / full.df) / (reduced.ss / reduced.df)
+    num = (reduced.ss - full.ss) / (reduced.df - full.df)
+    denom = full.ss / full.df
+    stat = num / denom
+    df1 = reduced.df - full.df
+    df2 = full.df
+    pval = 1 - stats.f(df1, df2).cdf(stat)
+    ftest = FTestResult(df1=df1, df2=df2, stat=stat, pval=pval)
+    return FitComparison(r2=r2, r2_adj=r2_adj, ftest=ftest)
 
-qr = QR(X)
-qr.fit(y)
+
+@dataclass(kw_only=True)
+class StanLMFit:
+    target: str
+    features: Sequence[str]
+    model: CmdStanModel
+    stan_mcmc: CmdStanMCMC = field(repr=False)
+    draws: pd.DataFrame = field(init=False, repr=False)
+
+    median: pd.Series = field(init=False, repr=False)
+    mad_sd: pd.Series = field(init=False, repr=False)
+    summary: pd.DataFrame = field(init=False)
+
+    def __post_init__(self):
+        stan_mcmc = self.stan_mcmc
+        features = self.features
+
+        stan_draws = stan_mcmc.draws_pd()
+        draws = pd.DataFrame(
+            {
+                "(Intercept)": stan_draws["alpha"],
+                **{
+                    feature: stan_draws[f"beta[{i + 1}]"]
+                    for i, feature in enumerate(features)
+                },
+                "sigma": stan_draws["sigma"],
+            }
+        )
+
+        median = draws.median()
+        median.name = "median"
+        mad_sd = pd.Series(
+            stats.median_abs_deviation(draws, axis=0), median.index, name="mad_sd"
+        )
+        summary = pd.concat([median, mad_sd], axis=1)
+
+        self.draws = draws
+        self.median = median
+        self.mad_sd = mad_sd
+        self.summary = summary
+
+    def _repr_html_(self):
+        summary = self.summary
+        return summary._repr_html_()  # type: ignore
+
+
+def stan_lm(
+    data: pd.DataFrame,
+    *,
+    features: Sequence[str] | None = None,
+    target: str,
+):
+    y = data[target].to_numpy(dtype=np.float64)
+    N = len(y)
+    if features is None:
+        features = [c for c in data.columns if c != target]
+    x = data[features].to_numpy(dtype=np.float64)
+    K = x.shape[1]
+    if K == 0:
+        raise Exception(f"Degeneate data matrix: shape = {x.shape}")
+    stan_data = dict(N=N, K=K, x=x, y=y)
+    model = CmdStanModel(stan_file="lr.stan")
+    stan_mcmc = model.sample(data=stan_data)
+    fit = StanLMFit(
+        target=target,
+        features=features,
+        model=model,
+        stan_mcmc=stan_mcmc,
+    )
+    return fit
+
+
+@dataclass
+class BambiLMFit:
+    formula: str
+    model: BambiModel
+    inference_data: InferenceData = field(repr=False)
+    draws: pd.DataFrame = field(init=False, repr=False)
+    summary: pd.DataFrame = field(init=False)
+
+    def __post_init__(self):
+        inference_data = self.inference_data
+        posterior = inference_data["posterior"]
+        draws = pd.DataFrame(
+            dict({k: v.to_numpy().ravel() for k, v in posterior.data_vars.items()})
+        )
+
+        median = draws.median()
+        median.name = "median"
+        mad_sd = pd.Series(
+            stats.median_abs_deviation(draws, axis=0), median.index, name="mad_sd"
+        )
+        summary = pd.concat([median, mad_sd], axis=1)
+
+        self.draws = draws
+        self.median = median
+        self.mad_sd = mad_sd
+        self.summary = summary
+
+    def _repr_html_(self):
+        summary = self.summary
+        return summary._repr_html_()  # type: ignore
+
+
+def bambi_lm(
+    formula: str,
+    data: pd.DataFrame,
+):
+    model = BambiModel(formula, data)
+    inference_data = model.fit()
+    bambi_lm_fit = BambiLMFit(
+        formula=formula, model=model, inference_data=inference_data
+    )
+    return bambi_lm_fit

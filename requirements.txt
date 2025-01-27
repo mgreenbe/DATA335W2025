@@ -1,8 +1,9 @@
 ipykernel
 ipywidgets
-numpy>=2.2
+numpy
 pandas
 matplotlib
 scipy
 scikit-learn
+cmdstanpy
 bambi
