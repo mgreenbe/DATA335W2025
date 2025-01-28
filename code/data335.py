@@ -7,6 +7,16 @@ from dataclasses import dataclass, field
 from numpy.typing import ArrayLike, NDArray
 from cmdstanpy import CmdStanModel, CmdStanMCMC
 from bambi import Model as BambiModel
+from IPython.display import display
+
+
+def table(s: pd.Series):
+    """Display a series horizontally."""
+    df = pd.DataFrame(
+        {str(k): [v] for k, v in zip(s.index, s.values)}, index=[s.name or ""]
+    )
+    display(df)
+
 
 _mad_sd_scale = stats.norm().ppf(0.75)  # This is 1/1.482602218505602.
 
