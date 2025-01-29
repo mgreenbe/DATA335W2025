@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import scipy.stats as stats
 from typing import Sequence
-from formulaic import model_matrix
+from formulaic import model_matrix, ModelSpec, ModelSpecs, ModelMatrix
 from arviz import InferenceData
 from dataclasses import dataclass, field
 from numpy.typing import ArrayLike, NDArray
@@ -67,7 +67,7 @@ F-statistic: {ftest.stat:.6f} on {ftest.df1} and {ftest.df2} DF, p-value: {ftest
 
 @dataclass(kw_only=True)
 class LMFit:
-    spec: str
+    model_specs: ModelSpecs
     features: Sequence[str]
     n: int
     unscaled_coef_cov: NDArray[np.float64] = field(repr=False)
@@ -98,6 +98,13 @@ class LMFit:
         self.coef_se = coef_se
         self.ttest = ttest
 
+    def predict(self, new_data: pd.DataFrame):
+        model_specs = self.model_specs
+        assert isinstance(model_specs, ModelSpecs)
+        X = model_matrix(model_specs.rhs, new_data)
+        assert isinstance(X, ModelMatrix)
+        return X @ self.coef_est
+
     def _repr_html_(self):
         features = self.features
         coef_est = self.coef_est
@@ -117,10 +124,16 @@ class LMFit:
 
 
 def lm(
-    spec: str,
+    formula_or_specs: str | ModelSpecs,
     data: pd.DataFrame,
 ):
-    y, X = model_matrix(spec, data)
+    if isinstance(formula_or_specs, str):
+        model_specs = ModelSpec.from_spec(formula_or_specs)
+        if not isinstance(model_specs, ModelSpecs):
+            raise Exception("model_specs isn't of the expected type.")
+    else:
+        model_specs = formula_or_specs
+    y, X = model_matrix(model_specs, data)
     n = len(y)
     assert isinstance(y, pd.DataFrame)
     y = y.to_numpy().astype(np.float64).squeeze()
@@ -141,7 +154,7 @@ def lm(
     ss = np.sum(resid**2)
 
     fit = LMFit(
-        spec=spec,
+        model_specs=model_specs,
         features=features,
         n=n,
         coef_est=coef_est,
@@ -166,7 +179,7 @@ def compare_fits(full: LMFit, reduced: LMFit):
 
 @dataclass(kw_only=True)
 class StanLMFit:
-    spec: str
+    model_specs: ModelSpecs
     features: Sequence[str]
     model: CmdStanModel
     stan_mcmc: CmdStanMCMC = field(repr=False)
@@ -202,16 +215,41 @@ class StanLMFit:
         self.mad_sd = mad_sd
         self.summary = summary
 
+    def posterior_predict(self, new_data):
+        model_specs = self.model_specs
+        draws = self.draws
+
+        assert isinstance(model_specs, ModelSpecs)
+        X = model_matrix(model_specs.rhs, new_data)
+        assert isinstance(X, ModelMatrix)
+        coef_draws = (
+            draws[[c for c in draws.columns if c != "sigma"]]
+            .to_numpy()
+            .astype(np.float64)
+        )
+        sigma_draws = draws["sigma"].to_numpy().astype(np.float64)
+        error_draws = stats.norm(0, sigma_draws).rvs()
+        y = X @ coef_draws.T + error_draws
+        return y
+
     def _repr_html_(self):
         summary = self.summary
         return summary._repr_html_()  # type: ignore
 
 
 def stan_lm(
-    spec: str,
+    formula_or_specs: str | ModelSpecs,
     data: pd.DataFrame,
 ):
-    y, X = model_matrix(spec, data)
+    if isinstance(formula_or_specs, str):
+        model_specs = ModelSpec.from_spec(formula_or_specs)
+        if not isinstance(model_specs, ModelSpecs):
+            raise Exception("model_specs isn't of the expected type.")
+    else:
+        model_specs = formula_or_specs
+
+    y, X = model_matrix(model_specs, data)
+
     assert isinstance(y, pd.DataFrame)
     y = y.to_numpy().astype(np.float64).squeeze()
     assert y.ndim == 1
@@ -229,7 +267,7 @@ def stan_lm(
     model = CmdStanModel(stan_file="lr.stan")
     stan_mcmc = model.sample(data=stan_data)
     fit = StanLMFit(
-        spec=spec,
+        model_specs=model_specs,
         features=features,
         model=model,
         stan_mcmc=stan_mcmc,
