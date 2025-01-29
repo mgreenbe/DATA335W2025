@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import scipy.stats as stats
 from typing import Sequence
+from formulaic import model_matrix
 from arviz import InferenceData
 from dataclasses import dataclass, field
 from numpy.typing import ArrayLike, NDArray
@@ -66,7 +67,7 @@ F-statistic: {ftest.stat:.6f} on {ftest.df1} and {ftest.df2} DF, p-value: {ftest
 
 @dataclass(kw_only=True)
 class LMFit:
-    target: str
+    spec: str
     features: Sequence[str]
     n: int
     unscaled_coef_cov: NDArray[np.float64] = field(repr=False)
@@ -116,32 +117,31 @@ class LMFit:
 
 
 def lm(
+    spec: str,
     data: pd.DataFrame,
-    *,
-    features: Sequence[str] | None = None,
-    target: str,
-    fit_intercept=True,
 ):
-    y = data[target].to_numpy(dtype=np.float64)
+    y, X = model_matrix(spec, data)
     n = len(y)
-    if features is None:
-        features = [c for c in data.columns if c != target]
-    X = data[features].to_numpy(dtype=np.float64)
-    if fit_intercept:
-        features = ["(Intercept)", *features]
-        X = np.hstack([np.ones((n, 1)), X])
+    assert isinstance(y, pd.DataFrame)
+    y = y.to_numpy().astype(np.float64).squeeze()
+    assert y.ndim == 1
+
+    assert isinstance(X, pd.DataFrame)
+    features = list(X.columns)
+
+    X = X.to_numpy().astype(np.float64)
     p = X.shape[1]
     if p == 0:
         raise Exception(f"Degeneate data matrix: shape = {X.shape}")
 
-    unscaled_coef_cov = np.linalg.inv(X.T @ X).astype(np.float64)
+    unscaled_coef_cov = np.linalg.inv(X.T @ X)
     coef_est = unscaled_coef_cov @ (X.T @ y)
     yfit = X @ coef_est
     resid = y - yfit
     ss = np.sum(resid**2)
 
     fit = LMFit(
-        target=target,
+        spec=spec,
         features=features,
         n=n,
         coef_est=coef_est,
@@ -166,7 +166,7 @@ def compare_fits(full: LMFit, reduced: LMFit):
 
 @dataclass(kw_only=True)
 class StanLMFit:
-    target: str
+    spec: str
     features: Sequence[str]
     model: CmdStanModel
     stan_mcmc: CmdStanMCMC = field(repr=False)
@@ -208,16 +208,20 @@ class StanLMFit:
 
 
 def stan_lm(
+    spec: str,
     data: pd.DataFrame,
-    *,
-    features: Sequence[str] | None = None,
-    target: str,
 ):
-    y = data[target].to_numpy(dtype=np.float64)
+    y, X = model_matrix(spec, data)
+    assert isinstance(y, pd.DataFrame)
+    y = y.to_numpy().astype(np.float64).squeeze()
+    assert y.ndim == 1
+
+    assert isinstance(X, pd.DataFrame)
+    X.pop("Intercept")
+    features = list(X.columns)
+    x = X.to_numpy().astype(np.float64)
+
     N = len(y)
-    if features is None:
-        features = [c for c in data.columns if c != target]
-    x = data[features].to_numpy(dtype=np.float64)
     K = x.shape[1]
     if K == 0:
         raise Exception(f"Degeneate data matrix: shape = {x.shape}")
@@ -225,7 +229,7 @@ def stan_lm(
     model = CmdStanModel(stan_file="lr.stan")
     stan_mcmc = model.sample(data=stan_data)
     fit = StanLMFit(
-        target=target,
+        spec=spec,
         features=features,
         model=model,
         stan_mcmc=stan_mcmc,
