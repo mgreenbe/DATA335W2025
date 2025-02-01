@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from typing import Sequence
+from typing import Any, Literal, Sequence
 from formulaic import model_matrix, ModelSpec, ModelSpecs, ModelMatrix
 from arviz import InferenceData
 from dataclasses import dataclass, field
@@ -9,6 +9,29 @@ from numpy.typing import ArrayLike, NDArray
 from cmdstanpy import CmdStanModel, CmdStanMCMC
 from bambi import Model as BambiModel
 from IPython.display import display
+from matplotlib.axes import Axes
+from matplotlib import pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.utils.validation import check_is_fitted
+
+
+def plot_regression_line(
+    model, ax: Axes | None = None, xlim: tuple[Any, Any] | None = None, **kwargs
+):
+    if isinstance(model, LinearRegression):
+        check_is_fitted(estimator=model, attributes=("intercept_", "coef_"))
+        a = model.intercept_
+        b = model.coef_[0]
+    else:
+        a = model[0]
+        b = model[1]
+    ax = plt.gca() if ax is None else ax
+    if xlim is not None:
+        xmin = xlim[0]
+        xmax = xlim[1]
+    else:
+        xmin, xmax = ax.get_xlim()
+    ax.plot([xmin, xmax], [a + b * xmin, a + b * xmax], **kwargs)
 
 
 def table(s: pd.Series):
@@ -126,6 +149,7 @@ class LMFit:
 def lm(
     formula_or_specs: str | ModelSpecs,
     data: pd.DataFrame,
+    na_action: Literal["pass", "drop", "raise"] = "drop",
 ):
     if isinstance(formula_or_specs, str):
         model_specs = ModelSpec.from_spec(formula_or_specs)
@@ -133,7 +157,7 @@ def lm(
             raise Exception("model_specs isn't of the expected type.")
     else:
         model_specs = formula_or_specs
-    y, X = model_matrix(model_specs, data)
+    y, X = model_matrix(model_specs, data, na_action=na_action)
     n = len(y)
     assert isinstance(y, pd.DataFrame)
     y = y.to_numpy().astype(np.float64).squeeze()
@@ -286,6 +310,7 @@ class BambiLMFit:
     def __post_init__(self):
         inference_data = self.inference_data
         posterior = inference_data["posterior"]
+
         draws = pd.DataFrame(
             dict({k: v.to_numpy().ravel() for k, v in posterior.data_vars.items()})
         )
@@ -300,16 +325,26 @@ class BambiLMFit:
         self.mad_sd = mad_sd
         self.summary = summary
 
+    def posterior_predict(self, new_data: pd.DataFrame):
+        model = self.model
+        inference_data = self.inference_data
+
+        idata = model.predict(
+            inference_data, kind="response", data=new_data, inplace=False
+        )
+        assert isinstance(idata, InferenceData)
+        draws = idata["posterior"].data_vars["mu"].to_numpy()
+        n_chains, n_samples, *rest = draws.shape
+        return draws.reshape((n_chains * n_samples, *rest))
+
     def _repr_html_(self):
         summary = self.summary
+
         return summary._repr_html_()  # type: ignore
 
 
-def bambi_lm(
-    formula: str,
-    data: pd.DataFrame,
-):
-    model = BambiModel(formula, data)
+def bambi_lm(formula: str, data: pd.DataFrame, dropna: bool = False):
+    model = BambiModel(formula, data, dropna=dropna)
     inference_data = model.fit()
     bambi_lm_fit = BambiLMFit(
         formula=formula, model=model, inference_data=inference_data
