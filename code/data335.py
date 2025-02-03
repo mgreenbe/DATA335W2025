@@ -261,10 +261,7 @@ class StanLMFit:
         return summary._repr_html_()  # type: ignore
 
 
-def stan_lm(
-    formula_or_specs: str | ModelSpecs,
-    data: pd.DataFrame,
-):
+def stan_lm(formula_or_specs: str | ModelSpecs, data: pd.DataFrame, show_console=False):
     if isinstance(formula_or_specs, str):
         model_specs = ModelSpec.from_spec(formula_or_specs)
         if not isinstance(model_specs, ModelSpecs):
@@ -289,7 +286,7 @@ def stan_lm(
         raise Exception(f"Degeneate data matrix: shape = {x.shape}")
     stan_data = dict(N=N, K=K, x=x, y=y)
     model = CmdStanModel(stan_file="lr.stan")
-    stan_mcmc = model.sample(data=stan_data)
+    stan_mcmc = model.sample(data=stan_data, show_console=show_console)
     fit = StanLMFit(
         model_specs=model_specs,
         features=features,
