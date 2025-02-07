@@ -1,0 +1,792 @@
+Entity,Code,Year,Total food expenditure,Total consumer expenditure,World regions according to OWID
+Afghanistan,AFG,2023,,,Asia
+Aland Islands,ALA,2023,,,Europe
+Albania,ALB,2023,,,Europe
+Algeria,DZA,2018,645.6,1732.2,
+Algeria,DZA,2019,556.0795,1606.7206,
+Algeria,DZA,2020,520.0589,1497.2292,
+Algeria,DZA,2021,614.0008,1648.0647,
+Algeria,DZA,2022,642.11694,1729.3489,
+Algeria,DZA,2023,,,Africa
+American Samoa,ASM,2023,,,Oceania
+Andorra,AND,2023,,,Europe
+Angola,AGO,2018,893.6,1838.3,
+Angola,AGO,2019,451.0519,996.2011,
+Angola,AGO,2020,513.12964,1116.6483,
+Angola,AGO,2021,657.6129,1322.1558,
+Angola,AGO,2022,691.91376,1393.8661,
+Angola,AGO,2023,,,Africa
+Anguilla,AIA,2023,,,North America
+Antigua and Barbuda,ATG,2023,,,North America
+Argentina,ARG,2018,2139.8,7566,
+Argentina,ARG,2019,859.241,4295.7856,
+Argentina,ARG,2020,1090.9214,5318.52,
+Argentina,ARG,2021,1494.6925,6443.1685,
+Argentina,ARG,2022,2070.0664,8953.552,
+Argentina,ARG,2023,,,South America
+Armenia,ARM,2023,,,Asia
+Aruba,ABW,2023,,,North America
+Australia,AUS,2018,3003.6,32390,
+Australia,AUS,2019,2546.8447,30309.615,
+Australia,AUS,2020,2722.4756,28348.242,
+Australia,AUS,2021,3239.4424,32475.715,
+Australia,AUS,2022,3507.6057,33566.805,
+Australia,AUS,2023,,,Oceania
+Austria,AUT,2018,2618.2,26656.1,
+Austria,AUT,2019,2291.102,26436.785,
+Austria,AUT,2020,2085.374,24142.15,
+Austria,AUT,2021,2987.647,26409.473,
+Austria,AUT,2022,2766.8171,25605.43,
+Austria,AUT,2023,,,Europe
+Austria-Hungary,OWID_AUH,2023,,,Europe
+Azerbaijan,AZE,2018,989.6,2561.7,
+Azerbaijan,AZE,2019,1093.2401,2794.9707,
+Azerbaijan,AZE,2020,1055.4464,2582.7498,
+Azerbaijan,AZE,2021,1223.5452,2809.143,
+Azerbaijan,AZE,2022,1411.4885,3325.5288,
+Azerbaijan,AZE,2023,,,Asia
+Bahamas,BHS,2023,,,North America
+Bahrain,BHR,2018,1674.1,12639.7,
+Bahrain,BHR,2019,1230.5845,10038.752,
+Bahrain,BHR,2020,1140.0425,9339.968,
+Bahrain,BHR,2021,1239.1884,9485.243,
+Bahrain,BHR,2022,1158.1042,8899.947,
+Bahrain,BHR,2023,,,Asia
+Bangladesh,BGD,2018,611.9,1143.3,
+Bangladesh,BGD,2019,649.29535,1236.752,
+Bangladesh,BGD,2020,723.7309,1360.0371,
+Bangladesh,BGD,2021,791.20123,1499.9324,
+Bangladesh,BGD,2022,923.5035,1752.0276,
+Bangladesh,BGD,2023,,,Asia
+Barbados,BRB,2023,,,North America
+Belarus,BLR,2018,1090.4,3371.5,
+Belarus,BLR,2019,923.08716,3096.3699,
+Belarus,BLR,2020,1014.7107,3228.76,
+Belarus,BLR,2021,1179.2625,3671.2693,
+Belarus,BLR,2022,1320.4661,4166.1714,
+Belarus,BLR,2023,,,Europe
+Belgium,BEL,2018,3034.7,22605.9,
+Belgium,BEL,2019,2694.3694,23210.56,
+Belgium,BEL,2020,2454.2979,21187.355,
+Belgium,BEL,2021,3260.3809,24189.252,
+Belgium,BEL,2022,3227.8252,23964.123,
+Belgium,BEL,2023,,,Europe
+Belize,BLZ,2023,,,North America
+Benin,BEN,2023,,,Africa
+Bermuda,BMU,2023,,,North America
+Bhutan,BTN,2023,,,Asia
+Bolivia,BOL,2018,696.3,2389.6,
+Bolivia,BOL,2019,649.1287,2421.5112,
+Bolivia,BOL,2020,602.91113,2232.8782,
+Bolivia,BOL,2021,659.9653,2261.037,
+Bolivia,BOL,2022,714.5037,2465.488,
+Bolivia,BOL,2023,,,South America
+Bonaire Sint Eustatius and Saba,BES,2023,,,North America
+Bosnia and Herzegovina,BIH,2018,1403.8,4576.8,
+Bosnia and Herzegovina,BIH,2019,1227.2747,4614.92,
+Bosnia and Herzegovina,BIH,2020,1205.5502,4578.6377,
+Bosnia and Herzegovina,BIH,2021,1421.5299,4734.8525,
+Bosnia and Herzegovina,BIH,2022,1471.8893,5036.72,
+Bosnia and Herzegovina,BIH,2023,,,Europe
+Botswana,BWA,2023,,,Africa
+Brazil,BRA,2018,866.3,5514.5,
+Brazil,BRA,2019,599.6366,4242.923,
+Brazil,BRA,2020,655.79486,4154.099,
+Brazil,BRA,2021,722.0721,4442.8306,
+Brazil,BRA,2022,882.3187,5433.0312,
+Brazil,BRA,2023,,,South America
+British Indian Ocean Territory,IOT,2023,,,Asia
+British Virgin Islands,VGB,2023,,,North America
+Brunei,BRN,2023,,,Asia
+Bulgaria,BGR,2018,1172.1,6069.8,
+Bulgaria,BGR,2019,1038.902,6172.471,
+Bulgaria,BGR,2020,1123.2827,6263.7417,
+Bulgaria,BGR,2021,1338.8458,6924.803,
+Bulgaria,BGR,2022,1551.6959,8117.5044,
+Bulgaria,BGR,2023,,,Europe
+Burkina Faso,BFA,2023,,,Africa
+Burundi,BDI,2023,,,Africa
+Cambodia,KHM,2018,500.2,1181.6,
+Cambodia,KHM,2019,495.7677,1316.1677,
+Cambodia,KHM,2020,457.17178,1181.6078,
+Cambodia,KHM,2021,546.4503,1279.3658,
+Cambodia,KHM,2022,576.717,1391.7091,
+Cambodia,KHM,2023,,,Asia
+Cameroon,CMR,2018,501.3,1105.6,
+Cameroon,CMR,2019,469.00677,1071.0068,
+Cameroon,CMR,2020,456.21967,1043.429,
+Cameroon,CMR,2021,540.9608,1196.5359,
+Cameroon,CMR,2022,513.89526,1137.5056,
+Cameroon,CMR,2023,,,Africa
+Canada,CAN,2018,2350.9,25961.2,
+Canada,CAN,2019,2098.342,25573.51,
+Canada,CAN,2020,2294.0552,24127.32,
+Canada,CAN,2021,2766.5105,27704.783,
+Canada,CAN,2022,2781.1907,29207.674,
+Canada,CAN,2023,,,North America
+Cape Verde,CPV,2023,,,Africa
+Cayman Islands,CYM,2023,,,North America
+Central African Republic,CAF,2023,,,Africa
+Chad,TCD,2023,,,Africa
+Chile,CHL,2018,1613.5,10072.7,
+Chile,CHL,2019,1275.6061,8185.616,
+Chile,CHL,2020,1230.2683,7740.0596,
+Chile,CHL,2021,1806.7124,9763.548,
+Chile,CHL,2022,1740.5986,9692.31,
+Chile,CHL,2023,,,South America
+China,CHN,2018,814.5,3779.4,
+China,CHN,2019,743.21545,3958.0322,
+China,CHN,2020,882.5526,4166.721,
+China,CHN,2021,933.8022,4680.1055,
+China,CHN,2022,965.64905,4804.6606,
+China,CHN,2023,,,Asia
+Christmas Island,CXR,2023,,,Asia
+Cocos Islands,CCK,2023,,,Asia
+Colombia,COL,2018,869.2,4523.4,
+Colombia,COL,2019,561.54987,3859.8394,
+Colombia,COL,2020,555.18396,3680.4521,
+Colombia,COL,2021,806.6916,4337.639,
+Colombia,COL,2022,873.9669,4712.4336,
+Colombia,COL,2023,,,South America
+Comoros,COM,2023,,,Africa
+Congo,COG,2023,,,Africa
+Cook Islands,COK,2023,,,Oceania
+Costa Rica,CRI,2018,2143,8332.2,
+Costa Rica,CRI,2019,2220.0195,8356.632,
+Costa Rica,CRI,2020,2211.117,7933.796,
+Costa Rica,CRI,2021,2656.4326,8411.837,
+Costa Rica,CRI,2022,2793.5496,8995.343,
+Costa Rica,CRI,2023,,,North America
+Cote d'Ivoire,CIV,2018,452.9,1142.3,
+Cote d'Ivoire,CIV,2019,598.85657,1612.1804,
+Cote d'Ivoire,CIV,2020,592.9711,1613.129,
+Cote d'Ivoire,CIV,2021,673.4896,1747.9529,
+Cote d'Ivoire,CIV,2022,613.992,1608.9664,
+Cote d'Ivoire,CIV,2023,,,Africa
+Croatia,HRV,2018,2564.7,11126.9,
+Croatia,HRV,2019,1699.2692,10890.731,
+Croatia,HRV,2020,1762.2521,8881.622,
+Croatia,HRV,2021,2256.284,11530.0625,
+Croatia,HRV,2022,2703.8542,14029.234,
+Croatia,HRV,2023,,,Europe
+Cuba,CUB,2023,,,North America
+Curacao,CUW,2023,,,North America
+Cyprus,CYP,2023,,,Europe
+Czechia,CZE,2018,1835.8,11230.1,
+Czechia,CZE,2019,1568.2462,11163.262,
+Czechia,CZE,2020,1630.1895,10822.646,
+Czechia,CZE,2021,1947.2992,12067.872,
+Czechia,CZE,2022,2105.4744,12872.07,
+Czechia,CZE,2023,,,Europe
+Czechoslovakia,OWID_CZS,2023,,,Europe
+Democratic Republic of Congo,COD,2023,,,Africa
+Democratic Republic of Vietnam,,2023,,,Asia
+Denmark,DNK,2018,3220,28066.1,
+Denmark,DNK,2019,2806.4456,27937.875,
+Denmark,DNK,2020,3019.4075,27328.982,
+Denmark,DNK,2021,3727.229,30251.883,
+Denmark,DNK,2022,3337.9702,28536.504,
+Denmark,DNK,2023,,,Europe
+Djibouti,DJI,2023,,,Africa
+Dominica,DMA,2023,,,North America
+Dominican Republic,DOM,2018,1508.7,5623.4,
+Dominican Republic,DOM,2019,1416.301,5632.1724,
+Dominican Republic,DOM,2020,1438.4884,5594.3916,
+Dominican Republic,DOM,2021,1674.0455,6247.196,
+Dominican Republic,DOM,2022,1970.4341,7421.0425,
+Dominican Republic,DOM,2023,,,North America
+Duchy of Modena and Reggio,,2023,,,Europe
+Duchy of Parma and Piacenza,,2023,,,Europe
+East Germany,OWID_GDR,2023,,,Europe
+East Timor,TLS,2023,,,Asia
+Ecuador,ECU,2018,1015.6,3874.3,
+Ecuador,ECU,2019,889.7669,3824.7068,
+Ecuador,ECU,2020,814.7874,3502.6465,
+Ecuador,ECU,2021,984.15454,3740.6025,
+Ecuador,ECU,2022,1075.6704,4079.9897,
+Ecuador,ECU,2023,,,South America
+Egypt,EGY,2018,684.9,2059.4,
+Egypt,EGY,2019,1025.6014,2951.054,
+Egypt,EGY,2020,1239.9948,3247.8376,
+Egypt,EGY,2021,1369.1368,3642.3933,
+Egypt,EGY,2022,1244.1223,3354.3552,
+Egypt,EGY,2023,,,Africa
+El Salvador,SLV,2018,922.2,3474.5,
+El Salvador,SLV,2019,839.15955,3577.2437,
+El Salvador,SLV,2020,742.20654,3165.5823,
+El Salvador,SLV,2021,1034.8896,3902.6797,
+El Salvador,SLV,2022,1207.5626,4555.978,
+El Salvador,SLV,2023,,,North America
+Equatorial Guinea,GNQ,2023,,,Africa
+Eritrea,ERI,2023,,,Africa
+Estonia,EST,2018,2317.7,11434.8,
+Estonia,EST,2019,2075.1401,11703.729,
+Estonia,EST,2020,2199.5994,11076.379,
+Estonia,EST,2021,2621.3987,12992.181,
+Estonia,EST,2022,2610.4146,13990.539,
+Estonia,EST,2023,,,Europe
+Eswatini,SWZ,2023,,,Africa
+Ethiopia,ETH,2018,257.4,454.6,
+Ethiopia,ETH,2019,174.16106,470.64874,
+Ethiopia,ETH,2020,233.75694,578.7519,
+Ethiopia,ETH,2021,244.73125,592.4403,
+Ethiopia,ETH,2022,275.3257,694.29626,
+Ethiopia,ETH,2023,,,Africa
+Ethiopia (former),OWID_ERE,2023,,,Africa
+Falkland Islands,FLK,2023,,,South America
+Faroe Islands,FRO,2023,,,Europe
+Federal Republic of Central America,,2023,,,North America
+Fiji,FJI,2023,,,Oceania
+Finland,FIN,2018,2908.7,25263.9,
+Finland,FIN,2019,2563.4158,24826.383,
+Finland,FIN,2020,2809.4917,23697.555,
+Finland,FIN,2021,3137.7615,26194.64,
+Finland,FIN,2022,2993.8958,25083.775,
+Finland,FIN,2023,,,Europe
+France,FRA,2018,2983.4,22585.8,
+France,FRA,2019,2658.6528,22282.934,
+France,FRA,2020,2846.2764,20825.95,
+France,FRA,2021,3234.394,22995.982,
+France,FRA,2022,2966.0623,21875.668,
+France,FRA,2023,,,Europe
+French Guiana,GUF,2023,,,South America
+French Polynesia,PYF,2023,,,Oceania
+Gabon,GAB,2023,,,Africa
+Gambia,GMB,2023,,,Africa
+Georgia,GEO,2018,922.5,2856.6,
+Georgia,GEO,2019,1001.7222,3223.3113,
+Georgia,GEO,2020,1138.663,3620.5708,
+Georgia,GEO,2021,1388.4469,4300.2734,
+Georgia,GEO,2022,1834.9602,5710.3506,
+Georgia,GEO,2023,,,Asia
+Germany,DEU,2018,2562.9,23917.6,
+Germany,DEU,2019,2267.84,23618.037,
+Germany,DEU,2020,2317.7488,22318.572,
+Germany,DEU,2021,2897.0408,24188.703,
+Germany,DEU,2022,2814.9365,23922.219,
+Germany,DEU,2023,,,Europe
+Ghana,GHA,2018,627,1516.8,
+Ghana,GHA,2019,505.2183,1417.948,
+Ghana,GHA,2020,566.20483,1468.2762,
+Ghana,GHA,2021,648.25385,1651.698,
+Ghana,GHA,2022,652.39056,1704.1095,
+Ghana,GHA,2023,,,Africa
+Gibraltar,GIB,2023,,,Europe
+Grand Duchy of Baden,,2023,,,Europe
+Grand Duchy of Tuscany,,2023,,,Europe
+Great Colombia,,2023,,,South America
+Greece,GRC,2018,2510.6,14701.4,
+Greece,GRC,2019,2111.1052,14831.527,
+Greece,GRC,2020,2325.7402,13926.818,
+Greece,GRC,2021,2489.9873,14117.1875,
+Greece,GRC,2022,2854.2793,15187.9795,
+Greece,GRC,2023,,,Europe
+Greenland,GRL,2023,,,North America
+Grenada,GRD,2023,,,North America
+Guadeloupe,GLP,2023,,,North America
+Guam,GUM,2023,,,Oceania
+Guatemala,GTM,2018,1662.5,4033.4,
+Guatemala,GTM,2019,1386.8254,3876.0696,
+Guatemala,GTM,2020,1365.0137,3798.14,
+Guatemala,GTM,2021,1484.9662,4291.291,
+Guatemala,GTM,2022,1636.1183,4753.419,
+Guatemala,GTM,2023,,,North America
+Guernsey,GGY,2023,,,Europe
+Guinea,GIN,2023,,,Africa
+Guinea-Bissau,GNB,2023,,,Africa
+Guyana,GUY,2023,,,South America
+Haiti,HTI,2023,,,North America
+Honduras,HND,2018,645.9,1968.5,
+Honduras,HND,2019,507.02377,2019.6182,
+Honduras,HND,2020,477.0356,1876.2595,
+Honduras,HND,2021,712.1019,2229.999,
+Honduras,HND,2022,839.59174,2659.4236,
+Honduras,HND,2023,,,North America
+Hong Kong,HKG,2018,5002.2,34036.8,
+Hong Kong,HKG,2019,4318.8677,34458.562,
+Hong Kong,HKG,2020,4181.5166,31245.65,
+Hong Kong,HKG,2021,3671.5447,30453.373,
+Hong Kong,HKG,2022,3581.0051,30558.518,
+Hong Kong,HKG,2023,,,Asia
+Hungary,HUN,2018,1449.4,7964.7,
+Hungary,HUN,2019,1170.9205,7928.434,
+Hungary,HUN,2020,1282.0813,7980.1626,
+Hungary,HUN,2021,1596.8452,8886.792,
+Hungary,HUN,2022,1614.3783,9191.589,
+Hungary,HUN,2023,,,Europe
+Iceland,ISL,2023,,,Europe
+India,IND,2018,372.2,1250.1,
+India,IND,2019,337.50467,1257.9259,
+India,IND,2020,325.86438,1183.9218,
+India,IND,2021,446.47217,1391.5947,
+India,IND,2022,496.70456,1552.9424,
+India,IND,2023,,,Asia
+Indonesia,IDN,2018,696.5,2193.9,
+Indonesia,IDN,2019,700.92926,2298.2249,
+Indonesia,IDN,2020,693.1733,2252.6611,
+Indonesia,IDN,2021,799.22504,2360.8198,
+Indonesia,IDN,2022,833.6685,2474.5386,
+Indonesia,IDN,2023,,,Asia
+Iran,IRN,2018,657.9,2356.9,
+Iran,IRN,2019,846.14075,3440.882,
+Iran,IRN,2020,1109.2701,4337.3535,
+Iran,IRN,2021,2188.1125,7624.2344,
+Iran,IRN,2022,435.07263,1529.9603,
+Iran,IRN,2023,,,Asia
+Iraq,IRQ,2018,739.5,2452.9,
+Iraq,IRQ,2019,806.43164,2901.157,
+Iraq,IRQ,2020,759.7717,2569.7483,
+Iraq,IRQ,2021,578.2825,1951.4076,
+Iraq,IRQ,2022,794.66296,2757.3945,
+Iraq,IRQ,2023,,,Asia
+Ireland,IRL,2018,2098.7,23266.7,
+Ireland,IRL,2019,1778.8379,23314.281,
+Ireland,IRL,2020,1919.0405,20979.514,
+Ireland,IRL,2021,2147.791,23240.537,
+Ireland,IRL,2022,1917.4574,23385.889,
+Ireland,IRL,2023,,,Europe
+Isle of Man,IMN,2023,,,Europe
+Israel,ISR,2018,3611.8,22321,
+Israel,ISR,2019,3373.9187,23932.207,
+Israel,ISR,2020,3008.407,21192.818,
+Israel,ISR,2021,3996.6045,25044.266,
+Israel,ISR,2022,4245.512,26542.771,
+Israel,ISR,2023,,,Asia
+Italy,ITA,2018,2986.9,21032.1,
+Italy,ITA,2019,2710.3584,20714.793,
+Italy,ITA,2020,2820.4473,18581.1,
+Italy,ITA,2021,3168.3293,20439.045,
+Italy,ITA,2022,3005.1377,20521.375,
+Italy,ITA,2023,,,Europe
+Jamaica,JAM,2023,,,North America
+Japan,JPN,2018,3417.5,21412,
+Japan,JPN,2019,3116.2434,22283.783,
+Japan,JPN,2020,3038.4639,21080.941,
+Japan,JPN,2021,3458.9053,20723.898,
+Japan,JPN,2022,2992.0938,18404.062,
+Japan,JPN,2023,,,Asia
+Jersey,JEY,2023,,,Europe
+Jordan,JOR,2018,1091.1,3687.9,
+Jordan,JOR,2019,790.9116,3374.208,
+Jordan,JOR,2020,783.2335,3246.9167,
+Jordan,JOR,2021,926.48926,3513.235,
+Jordan,JOR,2022,893.29834,3421.588,
+Jordan,JOR,2023,,,Asia
+Kazakhstan,KAZ,2018,2144.3,4780.4,
+Kazakhstan,KAZ,2019,2102.3142,4666.154,
+Kazakhstan,KAZ,2020,2217.4338,4766.008,
+Kazakhstan,KAZ,2021,2554.1501,5168.118,
+Kazakhstan,KAZ,2022,2785.167,5673.7305,
+Kazakhstan,KAZ,2023,,,Asia
+Kenya,KEN,2018,729.4,1380.1,
+Kenya,KEN,2019,782.83923,1454.8331,
+Kenya,KEN,2020,826.9117,1487.7286,
+Kenya,KEN,2021,885.3816,1578.82,
+Kenya,KEN,2022,912.74036,1611.1259,
+Kenya,KEN,2023,,,Africa
+Kingdom of Bavaria,,2023,,,Europe
+Kingdom of Sardinia,,2023,,,Europe
+Kingdom of Saxony,,2023,,,Europe
+Kingdom of Wurttemberg,,2023,,,Europe
+Kingdom of the Two Sicilies,,2023,,,Europe
+Kiribati,KIR,2023,,,Oceania
+Korea (former),OWID_KRU,2023,,,Asia
+Kosovo,OWID_KOS,2023,,,Europe
+Kuwait,KWT,2018,1910.5,9941.8,
+Kuwait,KWT,2019,1872.8813,10508.925,
+Kuwait,KWT,2020,1803.8622,9962.057,
+Kuwait,KWT,2021,1535.481,7942.251,
+Kuwait,KWT,2022,1934.0093,10054.294,
+Kuwait,KWT,2023,,,Asia
+Kyrgyzstan,KGZ,2023,,,Asia
+Laos,LAO,2018,871.4,1742.2,
+Laos,LAO,2019,836.81616,1723.8999,
+Laos,LAO,2020,867.3664,1769.3386,
+Laos,LAO,2021,875.5985,1729.6198,
+Laos,LAO,2022,555.5802,1100.2457,
+Laos,LAO,2023,,,Asia
+Latvia,LVA,2018,1820.8,10498.6,
+Latvia,LVA,2019,1764.8906,10762.6045,
+Latvia,LVA,2020,1816.6553,9816.2705,
+Latvia,LVA,2021,2171.1729,11246.937,
+Latvia,LVA,2022,2522.0854,13195.384,
+Latvia,LVA,2023,,,Europe
+Lebanon,LBN,2018,1796.3,8663.6,
+Lebanon,LBN,2019,248.76927,1327.844,
+Lebanon,LBN,2020,364.26733,1900.2549,
+Lebanon,LBN,2021,602.0936,2864.3027,
+Lebanon,LBN,2022,1178.6078,5694.9194,
+Lebanon,LBN,2023,,,Asia
+Lesotho,LSO,2023,,,Africa
+Liberia,LBR,2023,,,Africa
+Libya,LBY,2023,,,Africa
+Liechtenstein,LIE,2023,,,Europe
+Lithuania,LTU,2018,2521.1,11867.8,
+Lithuania,LTU,2019,2251.4084,12010.558,
+Lithuania,LTU,2020,2692.4365,11865.001,
+Lithuania,LTU,2021,2885.609,13750.975,
+Lithuania,LTU,2022,2856.6824,14458.731,
+Lithuania,LTU,2023,,,Europe
+Luxembourg,LUX,2023,,,Europe
+Macao,MAC,2023,,,Asia
+Madagascar,MDG,2023,,,Africa
+Malawi,MWI,2023,,,Africa
+Malaysia,MYS,2018,1410.7,6553.3,
+Malaysia,MYS,2019,1443.2708,6835.2856,
+Malaysia,MYS,2020,1526.1273,6444.81,
+Malaysia,MYS,2021,1736.9082,6319.1216,
+Malaysia,MYS,2022,1671.1545,6825.05,
+Malaysia,MYS,2023,,,Asia
+Maldives,MDV,2023,,,Asia
+Mali,MLI,2023,,,Africa
+Malta,MLT,2023,,,Europe
+Marshall Islands,MHL,2023,,,Oceania
+Martinique,MTQ,2023,,,North America
+Mauritania,MRT,2023,,,Africa
+Mauritius,MUS,2023,,,Africa
+Mayotte,MYT,2023,,,Africa
+Mexico,MEX,2018,1499.9,6406.2,
+Mexico,MEX,2019,1325.996,5972.499,
+Mexico,MEX,2020,1361.8076,5458.4526,
+Mexico,MEX,2021,1754.4174,6690.246,
+Mexico,MEX,2022,1985.9014,7714.4106,
+Mexico,MEX,2023,,,North America
+Micronesia (country),FSM,2023,,,Oceania
+Moldova,MDA,2023,,,Europe
+Monaco,MCO,2023,,,Europe
+Mongolia,MNG,2023,,,Asia
+Montenegro,MNE,2018,1763.9,6417.2,
+Montenegro,MNE,2019,1873.3401,8245.382,
+Montenegro,MNE,2020,1922.2367,7258.5576,
+Montenegro,MNE,2021,2077.2175,7649.307,
+Montenegro,MNE,2022,2211.2683,8921.544,
+Montenegro,MNE,2023,,,Europe
+Montserrat,MSR,2023,,,North America
+Morocco,MAR,2018,693.3,2041.8,
+Morocco,MAR,2019,653.0614,2021.4138,
+Morocco,MAR,2020,601.0732,1833.6385,
+Morocco,MAR,2021,741.1223,2184.5288,
+Morocco,MAR,2022,783.38226,2312.3337,
+Morocco,MAR,2023,,,Africa
+Mozambique,MOZ,2023,,,Africa
+Myanmar,MMR,2018,466.7,831.8,
+Myanmar,MMR,2019,490.21902,924.48755,
+Myanmar,MMR,2020,513.435,960.74786,
+Myanmar,MMR,2021,501.6014,885.8045,
+Myanmar,MMR,2022,334.171,592.1948,
+Myanmar,MMR,2023,,,Asia
+Namibia,NAM,2023,,,Africa
+Nauru,NRU,2023,,,Oceania
+Nepal,NPL,2023,,,Asia
+Netherlands,NLD,2018,2621,23083.1,
+Netherlands,NLD,2019,2404.7288,23065.732,
+Netherlands,NLD,2020,2481.732,21763.086,
+Netherlands,NLD,2021,2933.0422,24166.828,
+Netherlands,NLD,2022,2857.4243,24154.383,
+Netherlands,NLD,2023,,,Europe
+Netherlands Antilles,ANT,2023,,,North America
+New Caledonia,NCL,2023,,,Oceania
+New Zealand,NZL,2018,3277.8,24482.2,
+New Zealand,NZL,2019,3137.819,25585.77,
+New Zealand,NZL,2020,3241.865,25038.926,
+New Zealand,NZL,2021,3483.367,28553.148,
+New Zealand,NZL,2022,3473.0435,27839.271,
+New Zealand,NZL,2023,,,Oceania
+Nicaragua,NIC,2023,,,North America
+Niger,NER,2023,,,Africa
+Nigeria,NGA,2018,1016.9,1723.3,
+Nigeria,NGA,2019,850.2679,1502.4109,
+Nigeria,NGA,2020,818.39233,1443.1462,
+Nigeria,NGA,2021,748.6155,1268.5775,
+Nigeria,NGA,2022,825.8997,1399.8729,
+Nigeria,NGA,2023,,,Africa
+Niue,NIU,2023,,,Oceania
+Norfolk Island,NFK,2023,,,Oceania
+North Korea,PRK,2023,,,Asia
+North Macedonia,MKD,2018,1218.9,3961.1,
+North Macedonia,MKD,2019,1212.8369,4120.938,
+North Macedonia,MKD,2020,1185.8759,3866.5415,
+North Macedonia,MKD,2021,1659.675,4989.7056,
+North Macedonia,MKD,2022,1752.7549,5312.735,
+North Macedonia,MKD,2023,,,Europe
+Northern Mariana Islands,MNP,2023,,,Oceania
+Norway,NOR,2018,3726.5,31846.2,
+Norway,NOR,2019,2814.1484,28234.846,
+Norway,NOR,2020,2733.5383,26519.021,
+Norway,NOR,2021,4093.419,32792.06,
+Norway,NOR,2022,3804.563,30616.52,
+Norway,NOR,2023,,,Europe
+Oman,OMN,2018,1329.1,5867.4,
+Oman,OMN,2019,1300.3643,6875.6143,
+Oman,OMN,2020,1348.0492,6411.599,
+Oman,OMN,2021,1464.6271,6483.456,
+Oman,OMN,2022,2030.9667,9328.817,
+Oman,OMN,2023,,,Asia
+Orange Free State,,2023,,,Africa
+Pakistan,PAK,2018,453.9,1148,
+Pakistan,PAK,2019,324.4971,885.6382,
+Pakistan,PAK,2020,364.32373,945.84784,
+Pakistan,PAK,2021,383.90683,970.06726,
+Pakistan,PAK,2022,462.3029,1181.1047,
+Pakistan,PAK,2023,,,Asia
+Pakistan (former),,2023,,,Asia
+Palau,PLW,2023,,,Oceania
+Palestine,PSE,2023,,,Asia
+Panama,PAN,2018,1405.8,8949.2,
+Panama,PAN,2019,1230.8779,9159.57,
+Panama,PAN,2020,1037.3135,7332.2983,
+Panama,PAN,2021,1244.6166,7937.2373,
+Panama,PAN,2022,1405.9111,9012.407,
+Panama,PAN,2023,,,North America
+Papua New Guinea,PNG,2023,,,Oceania
+Paraguay,PRY,2018,1208.3,3815,
+Paraguay,PRY,2019,938.7923,3250.8447,
+Paraguay,PRY,2020,901.0702,3169.2954,
+Paraguay,PRY,2021,1124.078,3712.2825,
+Paraguay,PRY,2022,1218.6497,4087.3657,
+Paraguay,PRY,2023,,,South America
+Peru,PER,2018,1190.1,4529.7,
+Peru,PER,2019,1112.2732,4498.3374,
+Peru,PER,2020,1020.2378,4125.207,
+Peru,PER,2021,1121.0786,4213.8057,
+Peru,PER,2022,1268.0833,4763.889,
+Peru,PER,2023,,,South America
+Philippines,PHL,2018,952.3,2268.8,
+Philippines,PHL,2019,1002.00867,2578.544,
+Philippines,PHL,2020,945.5435,2399.6072,
+Philippines,PHL,2021,995.6181,2581.689,
+Philippines,PHL,2022,990.2932,2615.6138,
+Philippines,PHL,2023,,,Asia
+Pitcairn,PCN,2023,,,Oceania
+Poland,POL,2018,1480.3,8852.1,
+Poland,POL,2019,1301.012,8728.519,
+Poland,POL,2020,1516.3815,8736.737,
+Poland,POL,2021,1701.5762,9905.59,
+Poland,POL,2022,1969.6783,10162.285,
+Poland,POL,2023,,,Europe
+Portugal,PRT,2018,2629.4,15806.6,
+Portugal,PRT,2019,2449.082,16171.36,
+Portugal,PRT,2020,2688.4028,15300.566,
+Portugal,PRT,2021,2698.9797,15449.266,
+Portugal,PRT,2022,2761.9502,15699.362,
+Portugal,PRT,2023,,,Europe
+Puerto Rico,PRI,2023,,,North America
+Qatar,QAT,2018,1755.7,14314.7,
+Qatar,QAT,2019,1673.8707,14770.148,
+Qatar,QAT,2020,1543.2792,13610.189,
+Qatar,QAT,2021,1779.9376,14488.974,
+Qatar,QAT,2022,1587.5424,12931.382,
+Qatar,QAT,2023,,,Asia
+Republic of Vietnam,OWID_RVN,2023,,,Asia
+Reunion,REU,2023,,,Africa
+Romania,ROU,2018,2040.9,7480.7,
+Romania,ROU,2019,1932.8785,7819.403,
+Romania,ROU,2020,2018.2958,7638.26,
+Romania,ROU,2021,2262.3289,8976.611,
+Romania,ROU,2022,2441.638,9729.285,
+Romania,ROU,2023,,,Europe
+Russia,RUS,2018,1517,5420.7,
+Russia,RUS,2019,1283.6136,5179.36,
+Russia,RUS,2020,1299.8226,4951.623,
+Russia,RUS,2021,1755.3386,6046.52,
+Russia,RUS,2022,2130.677,7370.236,
+Russia,RUS,2023,,,Europe
+Rwanda,RWA,2023,,,Africa
+Saint Barthelemy,BLM,2023,,,North America
+Saint Helena,SHN,2023,,,Africa
+Saint Kitts and Nevis,KNA,2023,,,North America
+Saint Lucia,LCA,2023,,,North America
+Saint Martin (French part),MAF,2023,,,North America
+Saint Pierre and Miquelon,SPM,2023,,,North America
+Saint Vincent and the Grenadines,VCT,2023,,,North America
+Samoa,WSM,2023,,,Oceania
+San Marino,SMR,2023,,,Europe
+Sao Tome and Principe,STP,2023,,,Africa
+Saudi Arabia,SAU,2018,1689.6,8194,
+Saudi Arabia,SAU,2019,1741.5045,9437.031,
+Saudi Arabia,SAU,2020,1771.844,9526.283,
+Saudi Arabia,SAU,2021,2054.2495,9996.364,
+Saudi Arabia,SAU,2022,2306.0989,11282.644,
+Saudi Arabia,SAU,2023,,,Asia
+Senegal,SEN,2023,,,Africa
+Serbia,SRB,2018,1225.9,4792,
+Serbia,SRB,2019,1046.68,5029.9834,
+Serbia,SRB,2020,1143.7047,5011.7373,
+Serbia,SRB,2021,1418.8914,5898.6685,
+Serbia,SRB,2022,1430.4341,6237.4395,
+Serbia,SRB,2023,,,Europe
+Serbia and Montenegro,OWID_SRM,2023,,,Europe
+Seychelles,SYC,2023,,,Africa
+Sierra Leone,SLE,2023,,,Africa
+Singapore,SGP,2018,1503.1,21907.4,
+Singapore,SGP,2019,1385.3948,22882.162,
+Singapore,SGP,2020,1385.8069,18694.871,
+Singapore,SGP,2021,1893.4092,22639.174,
+Singapore,SGP,2022,1790.5901,25534.225,
+Singapore,SGP,2023,,,Asia
+Sint Maarten (Dutch part),SXM,2023,,,North America
+Slovakia,SVK,2018,1925.6,10493.5,
+Slovakia,SVK,2019,1757.331,11030.438,
+Slovakia,SVK,2020,1916.9081,11151.45,
+Slovakia,SVK,2021,2355.9558,11996.073,
+Slovakia,SVK,2022,2544.7075,12737.373,
+Slovakia,SVK,2023,,,Europe
+Slovenia,SVN,2018,2063.3,14111.3,
+Slovenia,SVN,2019,1811.9442,14526.551,
+Slovenia,SVN,2020,1828.0132,13020.277,
+Slovenia,SVN,2021,2331.8235,15681.224,
+Slovenia,SVN,2022,2314.3423,16399.82,
+Slovenia,SVN,2023,,,Europe
+Solomon Islands,SLB,2023,,,Oceania
+Somalia,SOM,2023,,,Africa
+South Africa,ZAF,2018,828.1,3861.4,
+South Africa,ZAF,2019,616.80804,3157.7812,
+South Africa,ZAF,2020,597.0115,3033.696,
+South Africa,ZAF,2021,920.8667,4324.8687,
+South Africa,ZAF,2022,917.0529,4250.3125,
+South Africa,ZAF,2023,,,Africa
+South Georgia and the South Sandwich Islands,SGS,2023,,,South America
+South Korea,KOR,2018,1951.4,14150.7,
+South Korea,KOR,2019,1543.9899,14501.479,
+South Korea,KOR,2020,1500.8661,13919.325,
+South Korea,KOR,2021,1986.0392,15492.057,
+South Korea,KOR,2022,1812.467,14920.832,
+South Korea,KOR,2023,,,Asia
+South Sudan,SSD,2023,,,Africa
+Spain,ESP,2018,2217.9,18286.7,
+Spain,ESP,2019,2057.6582,17956.453,
+Spain,ESP,2020,2158.3755,15696.67,
+Spain,ESP,2021,2275.315,17353.86,
+Spain,ESP,2022,2676.0183,17381.223,
+Spain,ESP,2023,,,Europe
+Sri Lanka,LKA,2018,822.5,2935.2,
+Sri Lanka,LKA,2019,714.90814,2736.8938,
+Sri Lanka,LKA,2020,779.89905,2742.7568,
+Sri Lanka,LKA,2021,780.4219,2815.8762,
+Sri Lanka,LKA,2022,588.3008,2198.9592,
+Sri Lanka,LKA,2023,,,Asia
+Sudan,SDN,2023,,,Africa
+Suriname,SUR,2023,,,South America
+Sweden,SWE,2018,2893.8,23371.4,
+Sweden,SWE,2019,2588.658,23155.363,
+Sweden,SWE,2020,2601.9092,22261.01,
+Sweden,SWE,2021,3268.2246,25825.855,
+Sweden,SWE,2022,2996.8994,23926.494,
+Sweden,SWE,2023,,,Europe
+Switzerland,CHE,2018,3908.8,42714.4,
+Switzerland,CHE,2019,3662.3967,45256.926,
+Switzerland,CHE,2020,3970.205,42616.324,
+Switzerland,CHE,2021,4313.358,43461.773,
+Switzerland,CHE,2022,4109.086,44109.562,
+Switzerland,CHE,2023,,,Europe
+Syria,SYR,2023,,,Asia
+Taiwan,TWN,2018,1857.8,12668.9,
+Taiwan,TWN,2019,1673.3723,13046.547,
+Taiwan,TWN,2020,1658.6211,12697.904,
+Taiwan,TWN,2021,1808.9745,13564.453,
+Taiwan,TWN,2022,2005.4708,14125.179,
+Taiwan,TWN,2023,,,Asia
+Tajikistan,TJK,2023,,,Asia
+Tanzania,TZA,2018,205.8,622.3,
+Tanzania,TZA,2019,212.1716,645.3198,
+Tanzania,TZA,2020,226.04926,662.217,
+Tanzania,TZA,2021,179.84703,656.87555,
+Tanzania,TZA,2022,197.34358,707.4798,
+Tanzania,TZA,2023,,,Africa
+Thailand,THA,2018,1012.1,4173.1,
+Thailand,THA,2019,882.7665,4513.2866,
+Thailand,THA,2020,966.9441,4471.9727,
+Thailand,THA,2021,1027.7134,3626.5225,
+Thailand,THA,2022,1022.5452,3817.7468,
+Thailand,THA,2023,,,Asia
+Togo,TGO,2023,,,Africa
+Tokelau,TKL,2023,,,Oceania
+Tonga,TON,2023,,,Oceania
+Trinidad and Tobago,TTO,2023,,,North America
+Tunisia,TUN,2018,570,2604.8,
+Tunisia,TUN,2019,538.6479,2665.321,
+Tunisia,TUN,2020,505.57117,2517.04,
+Tunisia,TUN,2021,647.72565,2677.411,
+Tunisia,TUN,2022,680.52997,2950.1914,
+Tunisia,TUN,2023,,,Africa
+Turkey,TUR,2018,1209.8,5544.1,
+Turkey,TUR,2019,841.1536,4264.945,
+Turkey,TUR,2020,971.52704,4896.058,
+Turkey,TUR,2021,1478.8129,5425.4863,
+Turkey,TUR,2022,1592.4287,6268.152,
+Turkey,TUR,2023,,,Asia
+Turkmenistan,TKM,2018,297.5,793.1,
+Turkmenistan,TKM,2019,300.36267,858.0973,
+Turkmenistan,TKM,2020,309.2268,888.6457,
+Turkmenistan,TKM,2021,310.05212,840.93097,
+Turkmenistan,TKM,2022,373.97946,1019.63983,
+Turkmenistan,TKM,2023,,,Asia
+Turks and Caicos Islands,TCA,2023,,,North America
+Tuvalu,TUV,2023,,,Oceania
+USSR,OWID_USS,2023,,,Europe
+Uganda,UGA,2018,209.4,473.5,
+Uganda,UGA,2019,216.24927,556.2124,
+Uganda,UGA,2020,218.87224,563.25836,
+Uganda,UGA,2021,293.40057,663.0901,
+Uganda,UGA,2022,313.2339,708.26843,
+Uganda,UGA,2023,,,Africa
+Ukraine,UKR,2018,857.6,2030.7,
+Ukraine,UKR,2019,874.2984,2420.3833,
+Ukraine,UKR,2020,963.7307,2571.9124,
+Ukraine,UKR,2021,1292.1539,3103.0767,
+Ukraine,UKR,2022,1021.3403,2390.3926,
+Ukraine,UKR,2023,,,Europe
+United Arab Emirates,ARE,2018,1954.9,14258.1,
+United Arab Emirates,ARE,2019,2003.57,16248.45,
+United Arab Emirates,ARE,2020,1962.9142,15710.711,
+United Arab Emirates,ARE,2021,1961.736,14409.577,
+United Arab Emirates,ARE,2022,2459.8027,18184.592,
+United Arab Emirates,ARE,2023,,,Asia
+United Kingdom,GBR,2018,2168.2,26770.3,
+United Kingdom,GBR,2019,1831.6174,25982.602,
+United Kingdom,GBR,2020,1951.0782,23482.635,
+United Kingdom,GBR,2021,2417.7542,27933.74,
+United Kingdom,GBR,2022,2313.528,27216.125,
+United Kingdom,GBR,2023,,,Europe
+United States,USA,2018,2626.2,41311.2,
+United States,USA,2019,2356.8203,42735.95,
+United States,USA,2020,2595.5752,41182.297,
+United States,USA,2021,3070.234,45898.055,
+United States,USA,2022,3382.4458,50288.887,
+United States,USA,2023,,,North America
+United States Virgin Islands,VIR,2023,,,North America
+Uruguay,URY,2018,2212.1,11882,
+Uruguay,URY,2019,1526.631,9324.551,
+Uruguay,URY,2020,1587.5781,9510.556,
+Uruguay,URY,2021,1950.6066,10364.276,
+Uruguay,URY,2022,2371.2742,12749.014,
+Uruguay,URY,2023,,,South America
+Uzbekistan,UZB,2018,186.8,619.2,
+Uzbekistan,UZB,2019,233.7826,823.05035,
+Uzbekistan,UZB,2020,264.32962,933.78687,
+Uzbekistan,UZB,2021,483.40182,1039.4144,
+Uzbekistan,UZB,2022,616.72015,1328.8956,
+Uzbekistan,UZB,2023,,,Asia
+Vanuatu,VUT,2023,,,Oceania
+Vatican,VAT,2023,,,Europe
+Venezuela,VEN,2018,95.4,499.5,
+Venezuela,VEN,2019,1.6081887,8.493537,
+Venezuela,VEN,2020,27.33975,145.65392,
+Venezuela,VEN,2021,46.672245,250.79521,
+Venezuela,VEN,2022,76.88895,416.83008,
+Venezuela,VEN,2023,,,South America
+Vietnam,VNM,2018,692.1,1785.7,
+Vietnam,VNM,2019,509.3486,1696.132,
+Vietnam,VNM,2020,533.45355,1745.4456,
+Vietnam,VNM,2021,563.15234,1805.1606,
+Vietnam,VNM,2022,654.7691,2103.9712,
+Vietnam,VNM,2023,,,Asia
+Wallis and Futuna,WLF,2023,,,Oceania
+West Germany,OWID_GFR,2023,,,Europe
+Western Sahara,ESH,2023,,,Africa
+Yemen,YEM,2023,,,Asia
+Yemen Arab Republic,OWID_YAR,2023,,,Asia
+Yemen People's Republic,OWID_YPR,2023,,,Asia
+Yugoslavia,OWID_YGS,2023,,,Europe
+Zambia,ZMB,2023,,,Africa
+Zimbabwe,ZWE,2023,,,Africa
