@@ -148,7 +148,7 @@ class LMFit:
 
 def lm(
     formula_or_specs: str | ModelSpecs,
-    data: pd.DataFrame,
+    data: pd.DataFrame | dict,
     na_action: Literal["pass", "drop", "raise"] = "drop",
 ):
     if isinstance(formula_or_specs, str):
@@ -157,6 +157,8 @@ def lm(
             raise Exception("model_specs isn't of the expected type.")
     else:
         model_specs = formula_or_specs
+    if not isinstance(data, pd.DataFrame):
+        data = pd.DataFrame(data)
     y, X = model_matrix(model_specs, data, na_action=na_action)
     n = len(y)
     assert isinstance(y, pd.DataFrame)
