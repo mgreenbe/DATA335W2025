@@ -1,0 +1,103 @@
+---
+title: "Lecture 14"
+author: "Matthew Greenberg"
+format: revealjs
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+jupyter: python3
+editor:
+  render-on-save: true
+---
+
+## A bit of statistical learning theory
+
+- Let $p(x, y)$ be an unknown **data-generating distribution**.
+
+- Let $f(x)$ be the **regression function** of $y$ on $x$:
+$$
+f(x) = \mathbb{E}[y\mid x]
+$$
+
+- Let $\varepsilon$ be the **residual error**:
+$$
+\varepsilon = y - f(x)
+$$
+
+---
+
+### Goals of statistical learning
+
+- design **constructions** of **estimates** $\hat{f}(x)$ of $f(x)$ from **training sets** samples from $p(x, y)$;
+
+- estimate the **quality** of these constructions and their resulting estimates.
+
+---
+
+### Mean-squared predictive error
+
+- Let $\hat{f}$ be an estimate of $f$.
+
+- Define the **mean-squared predictive error** (for short, **predictive error**) of $\hat{f}$:
+$$
+\operatorname{MSE}(\hat{f}) =
+\mathbb{E}\left[
+    (y - \hat{f}(x))^2
+\right]
+$$
+
+- Here, $(x,y)$ is **new data**, assumed independent of the training set used to construct $\hat{f}$.
+
+---
+
+### Estimating $\operatorname{MSE}(\hat{f})$ with a test set
+
+- As usual, we approximate expected values with averages.
+
+- Given a dataset $D_n=\{(x_i, y_i):i<n\}$, define
+$$
+\operatorname{MSE}(\hat{f}, D_n) = \frac1n\sum_i(y_i - \hat{f}(x_i))^2.
+$$
+
+- Call $D_n$ a **test set** if it consists of **new draws** from $p(x, y)$.
+
+- If these draws **aren't too correlated**, then
+  $$
+  \operatorname{MSE}(\hat{f}, D_n)\approx \operatorname{MSE}(\hat{f})
+  $$
+  by the **law of large numbers**.
+
+---
+
+### Training error is an optimistic estimate of predictive error
+
+- Let $D_{\text{train}}$ be the training set used to construct $\hat{f}$.
+
+- The quantity 
+$$
+\operatorname{MSE}(\hat{f}, D_\text{train})
+$$
+is called the **training error** associated to $\hat{f}$.
+
+- Since $D_{\text{train}}$ isn't new data, training error needn't be a good estimate of predictive error, often underestimating it.
+
+---
+
+### Synthetic data
+
+![](training_vs_testing_error.png)
+
+- Errors are averaged over 100 training sets of each size.
+
+- I used a single testing set of size 1 million.
+
+---
+
+### `auto` data
+
+![](auto_train_test_error.png)
+
+- 1000 splits into train/test sets of equal size
+
+---
+

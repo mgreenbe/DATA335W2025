@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import scipy.stats as stats
-from typing import Any, Literal, Sequence
+from typing import Any, Literal, Sequence, overload
 from formulaic import model_matrix, ModelSpec, ModelSpecs, ModelMatrix
 from arviz import InferenceData
 from dataclasses import dataclass, field
