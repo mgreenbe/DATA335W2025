@@ -1,5 +1,5 @@
 ---
-title: "Lecture 14"
+title: "L14: Statistical Learning"
 author: "Matthew Greenberg"
 format: revealjs
 html-math-method:

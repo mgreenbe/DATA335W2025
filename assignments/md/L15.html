@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="L14_files/libs/clipboard/clipboard.min.js"></script>
-<script src="L14_files/libs/quarto-html/tabby.min.js"></script>
-<script src="L14_files/libs/quarto-html/popper.min.js"></script>
-<script src="L14_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="L14_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="L14_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="L14_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="L15_files/libs/clipboard/clipboard.min.js"></script>
+<script src="L15_files/libs/quarto-html/tabby.min.js"></script>
+<script src="L15_files/libs/quarto-html/popper.min.js"></script>
+<script src="L15_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="L15_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="L15_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="L15_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Matthew Greenberg">
-  <title>L14: Statistical Learning</title>
+  <meta name="dcterms.date" content="2025-02-14">
+  <title>DATA 335</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="L14_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="L14_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="L15_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="L15_files/libs/revealjs/dist/reveal.css">
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -29,11 +30,11 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="L14_files/libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
-  <link href="L14_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="L14_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="L14_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="L14_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link rel="stylesheet" href="L15_files/libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
+  <link href="L15_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="L15_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="L15_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="L15_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -127,7 +128,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">L14: Statistical Learning</h1>
+  <h1 class="title">DATA 335</h1>
+  <p class="subtitle">Lecture 15: Data Splitting; Model Selection</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -137,87 +139,79 @@ Matthew Greenberg
 </div>
 </div>
 
+  <p class="date">2025-02-14</p>
 </section>
-<section id="a-bit-of-statistical-learning-theory" class="slide level2">
-<h2>A bit of statistical learning theory</h2>
+<section id="data-splitting" class="slide level2">
+<h2>Data splitting</h2>
 <ul>
-<li><p>Let <span class="math inline">\(p(x, y)\)</span> be an unknown <strong>data-generating distribution</strong>.</p></li>
-<li><p>Let <span class="math inline">\(f(x)\)</span> be the <strong>regression function</strong> of <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>: <span class="math display">\[
-f(x) = \mathbb{E}[y\mid x]
+<li><p>Split data into a <strong>training set</strong> and a <strong>testing set</strong>, setting aside the latter for estimation of predictive error.</p></li>
+<li><p><em>Once you make a modeling decision based on your testing set, it’s not a testing set anymore!</em> This is called <strong>data leakage</strong> or <strong>data snooping</strong>.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="how-should-you-split">How should you split?</h3>
+<ul>
+<li>More training data is better!</li>
+</ul>
+
+<img data-src="error_vs_training_fraction.png" class="r-stretch"></section>
+<section class="slide level2">
+
+<h3 id="leave-one-out-cross-validation-loocv"><strong>Leave-One-Out Cross Validation (LOOCV)</strong></h3>
+<ul>
+<li><p>Training set of size <span class="math inline">\(n-1\)</span>, test set of size <span class="math inline">\(1\)</span>.</p></li>
+<li><p>Need to fit <span class="math inline">\(n\)</span> models. Could be prohibitive for large datasets or complex models.</p></li>
+<li><p>The LOOCV estimate of the predictive error for a linear model fit to the <code>auto</code> dataset is 11.29.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="k-fold-cross-validation-cv"><strong><span class="math inline">\(k\)</span>-fold Cross Validation (CV)</strong></h3>
+
+<img data-src="cross_validation.png" class="r-stretch"><p>(Figure cropped from <a href="https://scikit-learn.org/stable/modules/cross_validation.html">the scikit-learn cross-validation docs</a>.)</p>
+</section>
+<section class="slide level2">
+
+<h3 id="k-fold-cross-validation-cv-1"><strong><span class="math inline">\(k\)</span>-fold Cross Validation (CV)</strong></h3>
+<ul>
+<li><p><span class="math inline">\(k\)</span> train/test splits; training sets of size <span class="math inline">\(\frac{(k-1)n}{k}\)</span>, test sets of size <span class="math inline">\(\frac nk\)</span>.</p></li>
+<li><p>Use <span class="math inline">\(k=5\)</span> (default in <code>scikit-learn</code>) unless you have a reason not to.</p></li>
+<li><p>Repeat a few times, computational budget permitting.</p></li>
+<li><p>The average, over 1000 train/test splits, of 5-fold CV estimate of the predictive error for a linear model fit to the <code>auto</code> dataset is 11.36.</p></li>
+</ul>
+</section>
+<section id="model-selection" class="slide level2">
+<h2>Model Selection</h2>
+<ul>
+<li>If you care primarily about predictive performance, use it as a metric for model selection.</li>
+</ul>
+<h3 id="example-auto-dataset">Example: <code>auto</code> dataset</h3>
+<ul>
+<li><p><strong>Model <span class="math inline">\(M_1\)</span></strong>: linear regression of <code>mpg</code> on <code>weight</code></p></li>
+<li><p><strong>Model <span class="math inline">\(M_2\)</span></strong>: linear regression of <code>mpg</code> on <code>weight</code> and <code>weight**2</code></p></li>
+<li><p>predictive error, estimated with 5-fold CV, 100 times: <span class="math display">\[
+\operatorname{MSE}(M_1)\approx 18.9,\qquad
+\operatorname{MSE}(M_2)\approx 17.5
 \]</span></p></li>
-<li><p>Let <span class="math inline">\(\varepsilon\)</span> be the <strong>residual error</strong>: <span class="math display">\[
-\varepsilon = y - f(x)
-\]</span></p></li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="goals-of-statistical-learning">Goals of statistical learning</h3>
+<h3 id="overfitting">Overfitting</h3>
 <ul>
-<li><p>design <strong>constructions</strong> of <strong>estimates</strong> <span class="math inline">\(\hat{f}(x)\)</span> of <span class="math inline">\(f(x)\)</span> from <strong>training sets</strong> samples from <span class="math inline">\(p(x, y)\)</span>;</p></li>
-<li><p>estimate the <strong>quality</strong> of these constructions and their resulting estimates.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="mean-squared-predictive-error">Mean-squared predictive error</h3>
-<ul>
-<li><p>Let <span class="math inline">\(\hat{f}\)</span> be an estimate of <span class="math inline">\(f\)</span>.</p></li>
-<li><p>Define the <strong>mean-squared predictive error</strong> (for short, <strong>predictive error</strong>) of <span class="math inline">\(\hat{f}\)</span>: <span class="math display">\[
-\operatorname{MSE}(\hat{f}) =
-\mathbb{E}\left[
-  (y - \hat{f}(x))^2
-\right]
-\]</span></p></li>
-<li><p>Here, <span class="math inline">\((x,y)\)</span> is <strong>new data</strong>, assumed independent of the training set used to construct <span class="math inline">\(\hat{f}\)</span>.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="estimating-operatornamemsehatf-with-a-test-set">Estimating <span class="math inline">\(\operatorname{MSE}(\hat{f})\)</span> with a test set</h3>
-<ul>
-<li><p>As usual, we approximate expected values with averages.</p></li>
-<li><p>Given a dataset <span class="math inline">\(D_n=\{(x_i, y_i):i&lt;n\}\)</span>, define <span class="math display">\[
-\operatorname{MSE}(\hat{f}, D_n) = \frac1n\sum_i(y_i - \hat{f}(x_i))^2.
-\]</span></p></li>
-<li><p>Call <span class="math inline">\(D_n\)</span> a <strong>test set</strong> if it consists of <strong>new draws</strong> from <span class="math inline">\(p(x, y)\)</span>.</p></li>
-<li><p>If these draws <strong>aren’t too correlated</strong>, then <span class="math display">\[
-\operatorname{MSE}(\hat{f}, D_n)\approx \operatorname{MSE}(\hat{f})
-\]</span> by the <strong>law of large numbers</strong>.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="training-error-is-an-optimistic-estimate-of-predictive-error">Training error is an optimistic estimate of predictive error</h3>
-<ul>
-<li><p>Let <span class="math inline">\(D_{\text{train}}\)</span> be the training set used to construct <span class="math inline">\(\hat{f}\)</span>.</p></li>
-<li><p>The quantity <span class="math display">\[
-\operatorname{MSE}(\hat{f}, D_\text{train})
-\]</span> is called the <strong>training error</strong> associated to <span class="math inline">\(\hat{f}\)</span>.</p></li>
-<li><p>Since <span class="math inline">\(D_{\text{train}}\)</span> isn’t new data, training error needn’t be a good estimate of predictive error, often underestimating it.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="synthetic-data">Synthetic data</h3>
-
-<img data-src="training_vs_testing_error.png" class="r-stretch"><ul>
-<li><p>Errors are averaged over 100 training sets of each size.</p></li>
-<li><p>I used a single testing set of size 1 million.</p></li>
-</ul>
-</section>
-<section class="slide level2">
-
-<h3 id="auto-data"><code>auto</code> data</h3>
-
-<img data-src="auto_train_test_error.png" class="r-stretch"><ul>
-<li>1000 splits into train/test sets of equal size</li>
+<li><p>A complex model can yield worse predictive performance than a simple one.</p></li>
+<li><p>Red flag: Low training error, high testing error</p></li>
+<li><p><strong>Example:</strong> If <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are independent with <span class="math display">\[
+y_i \sim N(\alpha, 1),
+\]</span> then the predictive error of the full linear model <span class="math inline">\(y=a + bx\)</span> exceeds that of the intercept-only linear model <span class="math inline">\(y=a\)</span>. (What would an <em>F</em>-test say in this situation?)</p></li>
 </ul>
 </section>
 <section class="slide level2">
 
 
-</section>
+
+<img data-src="overfitting_linear_model.png" class="r-stretch"></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -226,19 +220,19 @@ f(x) = \mathbb{E}[y\mid x]
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="L14_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="L15_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="L14_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="L14_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="L14_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="L15_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
