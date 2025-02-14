@@ -16,7 +16,7 @@ editor:
 
 - Split data into a **training set** and a **testing set**, setting aside the latter for estimation of predictive error.
 
-- *Once you make a modeling decision based on your testing set, it's not a testing set anymore!* This is called **data leakage** or **data snooping**.
+- *Once you make a modeling decision based on your testing set, it's not a testing set anymore!* This is called **data leakage**.
 
 ---
 
@@ -75,6 +75,10 @@ $$
 \operatorname{MSE}(M_1)\approx 18.9,\qquad
 \operatorname{MSE}(M_2)\approx 17.5
 $$
+
+---
+
+![](linear_vs_quadratic.png)
 
 ---
 
