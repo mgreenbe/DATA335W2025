@@ -10,3 +10,4 @@ bambi
 pyyaml
 nbformat
 nbclient
+beautifulsoup4
