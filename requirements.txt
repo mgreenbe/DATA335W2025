@@ -11,3 +11,4 @@ pyyaml
 nbformat
 nbclient
 beautifulsoup4
+statsmodels
