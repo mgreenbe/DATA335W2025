@@ -12,3 +12,5 @@ nbformat
 nbclient
 beautifulsoup4
 statsmodels
+jax
+optax
