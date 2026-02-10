@@ -1,0 +1,89 @@
+\documentclass[addpoints,12pt]{exam}
+
+\usepackage{amsmath}
+
+\begin{document}
+\title{DATA 335 - Winter 2026 - Quiz 1}
+\date{February 11, 2026}
+\maketitle
+
+\makebox[\textwidth]{Name:\enspace\hrulefill}
+
+\vspace{1cm}
+
+\makebox[\textwidth]{Student ID:\enspace\hrulefill}
+
+\vspace{1cm}
+
+\begin{center}
+\gradetable[v][questions]
+\end{center}
+
+\vspace{1cm}
+\section*{Instructions}
+
+\begin{itemize}
+    \item Complete all four problems in this booklet.
+    
+    \item Justify your answers fully, transcribing Python code where appropriate.
+    
+    \item You may use a computer to run Python code, search package documentation, and refer to any relevant course materials (Jupyter notebooks, textbooks, etc.).
+    
+    \item Use of AI chatbots/agents is prohibited.
+    
+    \item The time limit is 50 minutes.
+\end{itemize}
+
+\newpage
+\begin{questions}
+
+    \question
+    Each bag in a large box contains $25$ tulip bulbs.
+    It is known that $60\%$ of the bags contain bulbs for $5$ red and $20$ yellow tulips, while the remaining $40\%$ of the bags contain bulbs for $15$ red and $10$ yellow tulips.
+    A bag is selected at random and a bulb taken at random from this bag is planted.
+
+    \begin{parts}
+    \part[2] What is the probability that a yellow tulip will grow?
+    \vspace{8cm}
+    \part[2] Given that the tulip is yellow, what is the probability that it came from a bag containing $5$ red and $20$ yellow bulbs?
+    \end{parts}
+
+    \newpage
+    \question[3] On average, a grocer sells three of a certain article per week.
+    What is the smallest number these articles that the grocer must have in stock so that the chance of running out within a week is less than $0.01$?
+    Assume a Poisson distribution.
+
+    \newpage
+    \question Let random variable $\theta$ represent the rate at which people receive text messages, measured in messages per hour.
+    At first, you believe that the typical number of messages per hour is $5$ with a standard deviation of $0.25$.
+
+    \begin{parts}
+        \part[2] Tune an appropriate $\operatorname{Gamma}(s,r)$ prior model for $\theta$.
+        \vspace{8cm}
+        \part[2] What is the prior probability that the rate of text messages per hour is larger than $10$?
+    \end{parts}
+
+    \newpage
+    \question In a study of water quality, $n = 176$ samples were taken from streams having a high environmental impact from sheep farming.
+    Of these, $y = 44$ had a high Campylobacter (a kind of bacteria) level.
+    Let $\theta$ be the probability that a sample of water from this type of stream has a high Campylobacter level.
+
+    \begin{parts}
+    \part[2] Using a $\operatorname{Beta}(1,10)$, calculate the posterior distribution for $\theta$.
+
+    \vspace{8cm}
+    \part[2] Perform a Bayesian hypothesis test of
+    $$
+    H_0: \theta\leq 0.15\qquad\text{versus}\qquad H_1: \theta > 0.15
+    $$
+    at the $0.05$ level of significance.
+    \end{parts}
+
+    \newpage
+    \noindent Extra sheet
+\end{questions}
+
+
+
+
+\end{document}
